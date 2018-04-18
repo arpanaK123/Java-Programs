@@ -7,6 +7,7 @@
  */
 package com.bridgeit.algorithmprogram;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.bridgeit.utility.Utility;
@@ -17,13 +18,13 @@ public class Anagram {
 
 		System.out.println("eneter first string");
 
-		String words1 = Utility.inputString();
+		String words1 = Utility.inputString1();
 
 		System.out.println("enter second string");
 
-		String words2 = Utility.inputString();
-		
-		Utility.compareString(words1, words2);
-	}
+		String words2 = Utility.inputString1();
 
+		Utility.compareString(words1, words2);
+
+	}
 }

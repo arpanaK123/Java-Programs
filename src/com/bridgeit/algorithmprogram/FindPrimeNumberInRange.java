@@ -19,7 +19,7 @@ public class FindPrimeNumberInRange {
 
 		int range = Utility.inputInteger();
 
-		Utility.primenumber(range);
+		Utility.primeNumber(range);
 
 	}
 

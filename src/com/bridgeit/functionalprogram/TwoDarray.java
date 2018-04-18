@@ -4,7 +4,7 @@
  *  
  *  @Author:-Arpana kumari
  *  Version:-1.0
- *  @Since:-14 April,2018
+ *  @Since:-17 April,2018
  */
 package com.bridgeit.functionalprogram;
 
@@ -13,34 +13,28 @@ import com.bridgeit.utility.Utility;
 public class TwoDarray {
 
 	public static void main(String[] args) {
-		
+
 		System.out.println("press 1 for integer Array");
 		System.out.println("press 2 for double Array");
 		System.out.println("press 3 for boolean array");
 
 		System.out.println("enter your choice");
 		int choice = Utility.inputInteger();
-		
-		System.out.println("Enter the number of Rows");
-		int rows = Utility.inputInteger();
-		System.out.println("Enter the number of column");
-		int columns = Utility.inputInteger();
+
 		switch (choice) {
-		case 1: {
-			int array[][] = new int[rows][columns];
-			Utility.integerArray(rows, columns, array);
+		case 1:
+			Utility.integerArray();
 			break;
-		}
-		case 2: {
-			double array[][] = new double[rows][columns];
-			Utility.doubleArray(rows, columns, array);
+
+		case 2:
+			Utility.doubleArray();
 			break;
-		}
-		case 3: {
-			boolean array[][] = new boolean[rows][columns];
-			Utility.booleanArray(rows, columns, array);
+
+		case 3:
+
+			Utility.booleanArray();
 			break;
-		}
+
 		default:
 			System.out.println("enter correct choice");
 			break;

@@ -9,7 +9,6 @@
  */
 package com.bridgeit.functionalprogram;
 
-import java.util.Scanner;
 
 import com.bridgeit.utility.Utility;
 
