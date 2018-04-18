@@ -1,3 +1,11 @@
+/*
+ * Purpose:-find the prime numbers that are Anagram and Palindrome 
+ * 
+ * @Author:-Arpana kumari
+ * 
+ * version:-1.0
+ * Since:-18 April, 2018
+ */
 package com.bridgeit.algorithmprogram;
 
 import com.bridgeit.utility.Utility;

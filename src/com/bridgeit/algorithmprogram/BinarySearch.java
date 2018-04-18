@@ -3,7 +3,7 @@
  *  
  *  @Author:-Arpana kumari
  *  Version:-1.0
- *  @Since:-14 April,2018
+ *  @Since:-18 April,2018
  */
 package com.bridgeit.algorithmprogram;
 
@@ -71,7 +71,7 @@ public class BinarySearch {
 				System.out.print(array[i] + " ");
 			}
 			System.out.println();
-			Utility.insertionSort(array, size);
+			//Utility.insertionSort(array, size);
 			System.out.println("array element after sorting"); {
 			for (int i = 0; i <= size - 1; i++) {
 				System.out.print(array[i] + " ");
