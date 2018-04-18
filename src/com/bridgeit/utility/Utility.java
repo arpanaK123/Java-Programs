@@ -610,6 +610,11 @@ public class Utility {
 		return false;
 	}
 
+	/**
+	 * Palindrome function
+	 * @param number:its palindrome or not
+	 * @return
+	 */
 	public static boolean primePalindrome(int number) {
 		int sum = 0;
 		int rem = 0;
@@ -645,6 +650,37 @@ public class Utility {
 	// }
 	// }
 
+	/**
+	 * takes input-integer function
+	 * @param size
+	 * @return
+	 */
+	public Integer[] integerInput(int size)
+	{
+		Integer []array=new Integer[size];
+		System.out.println("eneter array element");
+		for(int i=0;i<=size-1;i++)
+		{
+			array[i]=Utility.inputInteger();
+		}
+		return array;
+	}
+	
+	/**
+	 * takes string input function
+	 * @param size
+	 * @return
+	 */
+	public String[] stringInput(int size)
+	{
+		String []array=new String[size];
+		System.out.println("enetr string element");
+		for(int i=0;i<=size-1;i++)
+		{
+			array[i]=Utility.inputString();
+		}
+		return array;
+	}
 	/**
 	 * Generic function of INSERTION SORT
 	 * 
@@ -719,5 +755,6 @@ public class Utility {
 		}
 
 	}
+	
 
 }
