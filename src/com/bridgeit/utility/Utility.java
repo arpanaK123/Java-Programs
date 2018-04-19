@@ -432,7 +432,7 @@ public class Utility {
 			for (int i = lowindex; i <= highindex; i++) {
 				str = swap(str, lowindex, i);
 				permute(str, lowindex + 1, highindex);
-				str = swap(str, lowindex, i);
+
 			}
 		}
 	}
@@ -571,9 +571,9 @@ public class Utility {
 	}
 
 	public static void primeNumber(int number) {
-		int flag ;
+		int flag;
 		for (int i = 2; i <= number; i++) {
-			flag=0;
+			flag = 0;
 			for (int j = 2; j < i; j++) {
 				if (i % j == 0) {
 					flag = 1;
@@ -594,93 +594,169 @@ public class Utility {
 	 */
 	public static boolean prime(int number) {
 		int flag = 0;
-		for (int i = 2; i <= number - 1; i++) {
-			for (int j = 2; j < i; j++) {
-				if (i % j == 0) {
-					flag = 1;
-					break;
-				}
-			}
-			if (flag == 0) {
+		for (int i = 2; i <= number / 2; i++) {
 
-				System.out.print(i + " ");
-				// return true;
+			if (number % i == 0) {
+				flag = 1;
+				break;
 			}
 		}
-		return false;
+		if (flag == 0) {
+
+			return true;
+		} else
+			return false;
 	}
 
 	/**
 	 * Palindrome function
-	 * @param number:its palindrome or not
+	 * 
+	 * @param number:its
+	 *            palindrome or not
 	 * @return
 	 */
 	public static boolean primePalindrome(int number) {
 		int sum = 0;
-		int rem = 0;
-		int num = number;
+		int rem;
+		int temp = number;
 		while (number != 0) {
-			rem = rem % 10;
+			rem = number % 10;
 			sum = sum * 10 + rem;
+
 			number = number / 10;
 
 		}
-		if (num == sum) {
+
+		if (temp == sum) {
+			// System.out.println(number);
 			return true;
-		} else
-			return false;
+		}
+
+		return false;
 
 	}
 
 	public static void primeAnagram(int[] prime) {
+		int count = 0, anagramCount = 0;
+		boolean z;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				z = checkEqual(prime[i], prime[j]);
+				if (z && count == 0) {
+					anagramCount++;
+					count++;
+					z = false;
+
+				}
+			}
+			if (count > 0) {
+				anagramCount++;
+				count = 0;
+			}
+		}
+		int[] anagramTotal = new int[anagramCount];
+		int x = 0;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				z = checkEqual(prime[i], prime[j]);
+				if (z && count == 0) {
+					anagramTotal[x] = prime[j];
+					x++;
+					count++;
+					z = false;
+				}
+			}
+			if (count > 0) {
+				anagramTotal[x] = prime[i];
+				x++;
+				count = 0;
+			}
+		}
+		System.out.println("*******");
+		for (int i = 0; i < anagramTotal.length; i++) {
+			for (int j = 0; j < anagramTotal.length - 1; j++) {
+				if (anagramTotal[j] > anagramTotal[j + 1]) {
+					int temp = anagramTotal[j];
+					anagramTotal[j] = anagramTotal[j + 1];
+					anagramTotal[j + 1] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < anagramTotal.length; i++) {
+			for (int j = 0; j < anagramTotal.length - 1; j++) {
+				if (anagramTotal[j] == anagramTotal[j + 1]) {
+					anagramTotal[j + 1] = -1;
+				}
+			}
+		}
+		for (int i = 0; i < anagramTotal.length; i++) {
+			if (anagramTotal[i] != -1) {
+				System.out.println(anagramTotal[i]);
+			}
+		}
 
 	}
 
-	// public static void insertionSort(int array[], int size) {
-	// int item, j;
-	// for (int i = 1; i <= size - 1; i++) {
-	// item = array[i];
-	// j = i + 1;
-	//
-	// while (j >= 0 && array[j] > item) {
-	// array[j + 1] = array[j];
-	// j--;
-	// }
-	// array[j + 1] = item;
-	// }
-	// }
+	public static boolean checkEqual(int value1, int value2) {
+		String value1String = Integer.toString(value1);
+		String value2String = Integer.toString(value2);
+		char value1Array[] = value1String.toCharArray();
+		char value2Array[] = value2String.toCharArray();
+		value1String = arrangeAnagram(value1Array);
+		value2String = arrangeAnagram(value2Array);
+		return value1String.equals(value2String);
+
+	}
+
+	public static String arrangeAnagram(char[] item) {
+		String arrangeItem = "";
+		for (int i = 0; i < item.length; i++) {
+			for (int j = 0; j < item.length - 1; j++) {
+				if (item[j] > item[j + 1]) {
+					char temp = item[j];
+					item[j] = item[j + 1];
+					item[j + 1] = temp;
+
+				}
+			}
+		}
+		for (int i = 0; i < item.length; i++) {
+			arrangeItem = arrangeItem + item[i];
+
+		}
+		return arrangeItem;
+	}
 
 	/**
 	 * takes input-integer function
+	 * 
 	 * @param size
 	 * @return
 	 */
-	public Integer[] integerInput(int size)
-	{
-		Integer []array=new Integer[size];
+	public static Integer[] integerInput(int size) {
+		Integer[] array = new Integer[size];
 		System.out.println("eneter array element");
-		for(int i=0;i<=size-1;i++)
-		{
-			array[i]=Utility.inputInteger();
+		for (int i = 0; i <= size - 1; i++) {
+			array[i] = Utility.inputInteger();
 		}
 		return array;
 	}
-	
+
 	/**
 	 * takes string input function
+	 * 
 	 * @param size
 	 * @return
 	 */
-	public String[] stringInput(int size)
-	{
-		String []array=new String[size];
+	public static String[] stringInput(int size) {
+		String[] array = new String[size];
 		System.out.println("enetr string element");
-		for(int i=0;i<=size-1;i++)
-		{
-			array[i]=Utility.inputString();
+		for (int i = 0; i <= size - 1; i++) {
+			array[i] = Utility.inputString();
 		}
 		return array;
 	}
+
 	/**
 	 * Generic function of INSERTION SORT
 	 * 
@@ -724,17 +800,17 @@ public class Utility {
 	 * generic functiom of binary search
 	 * 
 	 * @param array
-	 * @param value
+	 * @param item
 	 * @return
 	 */
-	public static <t extends Comparable<t>, T> boolean binarySearch(T[] array, String value) {
+	public static <T extends Comparable<T>> boolean binarySearch(T[] array, T item) {
 		int low = 0;
 		int high = array.length;
 		while (low <= high) {
 			int mid = (low + high) / 2;
-			if (array[mid].equals(value)) {
+			if (array[mid].equals(item)) {
 				return true;
-			} else if ((((String) array[mid]).compareTo((String) value)) < 0) {
+			} else if ((((String) array[mid]).compareTo((String) item)) < 0) {
 				low = mid + 1;
 			} else {
 				high = mid;
@@ -751,9 +827,44 @@ public class Utility {
 	 */
 	public static <t> void arrayDisplay(t array[], int size) {
 		for (int i = 0; i <= array.length - 1; i++) {
-			System.out.println(array[i] + " ");
+			System.out.print(array[i] + " ");
 		}
 
+	}
+
+	public static int rangePower(int exponent, int number) {
+		int sum = 1;
+		for (int i = 0; i < exponent; i++) {
+			sum = sum * number;
+		}
+		return sum;
+
+	}
+
+	public static void yourNumberFind(int[] array) {
+		int low = 0;
+		int high = array.length;
+		int mid = (low + high) / 2;
+		while (low < high) {
+			System.out.println("you are between" + " " + low + " " + " and" + " " + (high - 1));
+			System.out.println("enter true or false");
+			boolean answer = Utility.inputBoolean();
+			mid = (low + 1 + high) / 2;
+			if (answer == true) {
+				low = mid + 1;
+			} else if (answer == false) {
+				high = mid;
+			}
+		}
+		System.out.println("your number is=" + " " + array[mid]);
+	}
+	
+	public static void mergeSort(String array[])
+	{
+		if(array.length>2)
+		{
+			
+		}
 	}
 	
 

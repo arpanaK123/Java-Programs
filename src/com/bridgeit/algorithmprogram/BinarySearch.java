@@ -24,66 +24,105 @@ public class BinarySearch {
 
 		System.out.println("enter array size");
 		int size = Utility.inputInteger();
-		int array[] = new int[size];
-		String array1[] = new String[size];
-		System.out.println("enter array element");
-		for (int i = 0; i <= size - 1; i++) {
-			array[i] = Utility.inputInteger();
-		}
-		for (int i = 0; i <= size - 1; i++) {
-			array1[i] = Utility.inputString();
-		}
+
+		Integer[] array;
+		String[] stringArray;
+		String items;
+		Integer item;
+		long start;
+		long stop;
+
 		switch (choice) {
 		case 1: {
-			System.out.println("press 1 for start the stopwatch");
-			long start = Utility.inputInteger();
-			start = System.nanoTime();
 
-			System.out.println("enter the key to be searched");
-			int key = Utility.inputInteger();
-			int result = Utility.binarysearch(array, 0, size - 1, key);
-			if (result >= 0) {
-				System.out.println("key found @ index=" + result);
-			} else {
+			array = Utility.integerInput(size);
+			array = Utility.bubbleSort(array);
+			Utility.arrayDisplay(array, size);
+			System.out.println("enter key to be searched");
+			item = Utility.inputInteger();
+			start = System.nanoTime();
+			if (Utility.binarySearch(array, item))
+				System.out.println("key found");
+			else
 				System.out.println("key not found");
-			}
-			System.out.println("press 2 for stop the stopwatch");
-			long stop = Utility.inputInteger();
+
 			stop = System.nanoTime();
-			System.out.println("elapsed time=" + " " + (stop - start));
+			System.out.println("elapsed time=" + (stop - start));
+
 			break;
-
 		}
-
 		case 2: {
-			System.out.println("press 1 for start the stopwatch");
-			long start = Utility.inputInteger();
+			stringArray = Utility.stringInput(size);
+			stringArray = Utility.bubbleSort(stringArray);
+			Utility.arrayDisplay(stringArray, size);
+			System.out.println("enter the string key to be searched");
+			items = Utility.inputString();
 			start = System.nanoTime();
+			if (Utility.binarySearch(stringArray, items))
+				
+			
+				System.out.println("string key found");
+
+			else
+
+			System.out.println("key not found");
+			stop = System.nanoTime();
+			System.out.println("elapsed time=" + (stop - start));
 			break;
+
 		}
 
-		case 3:
-			System.out.println("press 1 for start stopwatch");
-			long start = Utility.inputInteger();
-			start = System.nanoTime();
-			System.out.println("array element before sorting");
-			for (int i = 0; i <= size - 1; i++) {
-				System.out.print(array[i] + " ");
-			}
-			System.out.println();
-			//Utility.insertionSort(array, size);
-			System.out.println("array element after sorting"); {
-			for (int i = 0; i <= size - 1; i++) {
-				System.out.print(array[i] + " ");
-				System.out.println("press 2 for stop the stopwatch");
-				long stop = Utility.inputInteger();
-				stop = System.nanoTime();
-				System.out.println("elapsed time=" + " " + (stop - start));
-			}
+		case 3: {
+			array=Utility.integerInput(size);
+			start=System.nanoTime();
+			array=Utility.insertionSort(array);
+			Utility.arrayDisplay(array, size);
+			stop=System.nanoTime();
+			System.out.println("elapsed time="+(stop-start));
+			break;
 		}
+		case 4: {
+
+			stringArray = Utility.stringInput(size);
+			start = System.nanoTime();
+			stringArray = Utility.insertionSort(stringArray);
+
+			Utility.arrayDisplay(stringArray, size);
+			stop = System.nanoTime();
+
+			System.out.println("elapsed time=" + (stop - start));
+			break;
+			
+		
+		}
+		
+		case 5:
+		{
+			array=Utility.integerInput(size);
+			start=System.nanoTime();
+			array=Utility.bubbleSort(array);
+			Utility.arrayDisplay(array, size);
+			stop=System.nanoTime();
+			System.out.println("elapsed time="+(stop-start));
+			break;
+			
+		}
+		case 6:
+		{
+		stringArray=Utility.stringInput(size);
+		start=System.nanoTime();
+		stringArray=Utility.bubbleSort(stringArray);
+		Utility.arrayDisplay(stringArray, size);
+		stop=System.nanoTime();
+		System.out.println("elapsed time="+(stop-start));
+		break;
+			
+		}
+		default:
+			System.out.println("enter correct choice");
+			break;
 
 		}
 
 	}
-
 }
