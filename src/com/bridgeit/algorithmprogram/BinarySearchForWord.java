@@ -1,3 +1,11 @@
+/*
+ * Purpose:-Read in a list of words from File. Then prompt the user to enter
+ *  a word to search the list. The program reports if the search word is found in the list.
+ *
+ *@Author:-Arpana kumari
+ *Version:-1.0
+ *@Since:-19 April, 2018
+ */
 package com.bridgeit.algorithmprogram;
 
 import com.bridgeit.utility.Utility;

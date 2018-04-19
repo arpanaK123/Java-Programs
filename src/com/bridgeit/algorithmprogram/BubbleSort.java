@@ -1,3 +1,11 @@
+/*
+ * Purpose:- Reads in integers prints them in sorted order using Bubble Sort
+ *            Print the Sorted List 
+ *            
+ * @Author:-Arpana kumari
+ * version:-1.0
+ * @since:-19 April, 2018S
+ */
 package com.bridgeit.algorithmprogram;
 
 import com.bridgeit.utility.Utility;
