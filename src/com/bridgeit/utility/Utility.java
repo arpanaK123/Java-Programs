@@ -768,7 +768,7 @@ public class Utility {
 			T ne = array[i];
 			int j;
 			for (j = i; j > 0 && (array[j - 1].compareTo(ne)) > 0; j--) {
-				array[i] = array[j - 1];
+				array[j] = array[j - 1];
 
 			}
 			array[j] = ne;
@@ -832,6 +832,13 @@ public class Utility {
 
 	}
 
+	/**
+	 * Find power range function
+	 * 
+	 * @param exponent
+	 * @param number
+	 * @return sum
+	 */
 	public static int rangePower(int exponent, int number) {
 		int sum = 1;
 		for (int i = 0; i < exponent; i++) {
@@ -841,6 +848,11 @@ public class Utility {
 
 	}
 
+	/**
+	 * Your number find function
+	 * 
+	 * @param array
+	 */
 	public static void yourNumberFind(int[] array) {
 		int low = 0;
 		int high = array.length;
@@ -858,14 +870,274 @@ public class Utility {
 		}
 		System.out.println("your number is=" + " " + array[mid]);
 	}
-	
-	public static void mergeSort(String array[])
-	{
-		if(array.length>2)
-		{
-			
+
+	/**
+	 * merge Sort for String function
+	 * 
+	 * @param list
+	 * @return sorted string
+	 */
+	public static String[] mergeSort(String[] list) {
+		String[] sorted = new String[list.length];
+		if (list.length == 1) {
+			sorted = list;
+		} else {
+			int mid = list.length / 2;
+			String[] left = null;
+			String[] right = null;
+			if ((list.length % 2) == 0) {
+				left = new String[list.length / 2];
+				right = new String[list.length / 2];
+			} else {
+				left = new String[list.length / 2];
+				right = new String[(list.length / 2) + 1];
+			}
+
+			int y = 0;
+			for (int x = 0; x < mid; x++) {
+				left[x] = list[x];
+			}
+			for (int x = 0; x < list.length; x++) {
+				right[y++] = list[x];
+			}
+			left = mergeSort(left);
+			right = mergeSort(right);
+			sorted = mergeArray(left, right);
 		}
+
+		return sorted;
 	}
-	
+
+	/**
+	 * merge string function
+	 * 
+	 * @param left
+	 * @param right
+	 * @return merged string
+	 */
+	private static String[] mergeArray(String[] left, String[] right) {
+		String[] merged = new String[left.length + right.length];
+		int lIndex = 0;
+		int rIndex = 0;
+		int mIndex = 0;
+		int comp = 0;
+		while (lIndex < left.length || rIndex < right.length) {
+			if (lIndex == left.length) {
+				merged[mIndex++] = right[rIndex++];
+			} else if (rIndex == right.length) {
+				merged[mIndex++] = left[lIndex++];
+			} else {
+				comp = left[lIndex].compareTo(right[rIndex]);
+				if (comp > 0) {
+					merged[mIndex++] = right[rIndex++];
+				} else if (comp < 0) {
+					merged[mIndex++] = left[lIndex++];
+				} else {
+					merged[mIndex++] = left[lIndex++];
+				}
+			}
+		}
+		return merged;
+
+	}
+
+	/**
+	 * Change how many notes
+	 * 
+	 * @param amount
+	 */
+	public static void amountChange(int amount) {
+		int a, b, c, d, e, f, g;
+
+		while (amount >= 500) {
+			a = amount / 500;
+			amount = amount % 500;
+			System.out.println("number of Rs 500 notes=" + " " + a);
+			break;
+		}
+		while (amount >= 100) {
+			b = amount / 100;
+			amount = amount % 100;
+			System.out.println("number of Rs 100 notes=" + " " + b);
+			break;
+		}
+		while (amount >= 50) {
+			c = amount / 50;
+			amount = amount % 50;
+			System.out.println("number of Rs 50 notes=" + " " + c);
+			break;
+		}
+		while (amount >= 10)
+
+		{
+			d = amount / 10;
+			amount = amount % 10;
+			System.out.println("number of Rs 10 notes=" + " " + d);
+			break;
+		}
+		while (amount >= 5) {
+			e = amount / 5;
+			amount = amount % 5;
+			System.out.println("number of  Rs 5 notes=" + " " + e);
+			break;
+		}
+		while (amount >= 2) {
+			f = amount / 2;
+			amount = amount % 2;
+			System.out.println("number of Rs 2 notes=" + " " + f);
+			break;
+		}
+		while (amount >= 1) {
+			g = amount / 1;
+			amount = amount % 1;
+			System.out.println("number of Rs 1 notes=" + " " + g);
+			break;
+		}
+
+	}
+
+	/**
+	 * find the day of calender
+	 * 
+	 * @param m:
+	 *            month
+	 * @param d:
+	 *            day
+	 * @param y:
+	 *            year
+	 * @return: day
+	 */
+	public static int calender(int m, int d, int y) {
+
+		int y0 = y - (14 - m) / 12;
+
+		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+
+		int m0 = m + 12 * ((14 - m) / 12) - 2;
+
+		int d0 = (d + x + ((31 * m0) / 12)) % 7;
+
+		return d0;
+	}
+
+	/**
+	 * change into celsius to farenheit function
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static double celsiusToFarenheit(double value) {
+		return ((value * 9 / 5)) + 32;
+	}
+
+	/**
+	 * change into Farenheit to celsius function
+	 * 
+	 * @param value
+	 * @return
+	 */
+	public static double farenheitToCelsius(double value) {
+		return (value - 32) * 5 / 9;
+	}
+
+	/**
+	 * monthly payment function
+	 * 
+	 * @param P
+	 * @param n
+	 * @param r
+	 * @return
+	 */
+	public static double paymentMonthly(double P, double n, double r) {
+		return ((P * r) / 1 - 1 / powerDouble((1 + r), (n)));
+	}
+
+	/**
+	 * @param number
+	 * @param exponent
+	 * @return
+	 */
+	private static double powerDouble(double number, double exponent) {
+		double sum = 1;
+		for (int i = 0; i < exponent; i++) {
+			sum = sum * number;
+		}
+		return sum;
+	}
+
+	/**
+	 * find the square root
+	 * 
+	 * @param c
+	 */
+	public static void sqrt(double c) {
+		double t = c;
+		double epsilon = 1e-15;
+
+		while (Math.abs(t - c / t) > epsilon * t) {
+			t = (c / t + t) / 2.0;
+		}
+
+		System.out.println(t);
+	}
+
+	/**
+	 * change decimal number to binary number
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static String toBinary(int number) {
+		String temp = "";
+		int rem;
+		while (number != 0) {
+			rem = number % 2;
+			temp = temp + rem;
+			number = number / 2;
+
+		}
+
+		System.out.println(temp);
+		String reverse = "";
+		char reverseArray[] = temp.toCharArray();
+		for (int i = reverseArray.length - 1; i >= 0; i--) {
+			reverse = reverse + reverseArray[i];
+		}
+		// System.out.println(reverse);
+
+		return reverse;
+	}
+
+	public static String swapNibble(int number) {
+		return null;
+
+	}
+
+	public static void gameTicTacToe()
+	{
+		public static final int empty=0;
+		public static final int cross=0;
+		public static final int naught=0;
+		
+		
+		public static final int play=0;
+		public static final int draw=1;
+		public static final int cross-won=2;
+		public static final int naught-won=3;
+		
+		public static final int row=3,column=3;
+		
+		public static int board[][]=new int [row][column];
+		
+		public static int currentState;
+        
+		public static int currentPlayer;
+		
+		public static int currentRow,currentColumn;
+		
+		int input=Utility.inputInteger();
+		
+		
+	}
 
 }

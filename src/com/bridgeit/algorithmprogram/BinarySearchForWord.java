@@ -4,33 +4,48 @@
  *
  *@Author:-Arpana kumari
  *Version:-1.0
- *@Since:-19 April, 2018
+ *@Since:-20 April, 2018
  */
 package com.bridgeit.algorithmprogram;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.Arrays;
+import java.util.Scanner;
 
 import com.bridgeit.utility.Utility;
 
 public class BinarySearchForWord {
 
-	public static void main(String[] args) {
-		System.out.println("enter array size");
-		int size = Utility.inputInteger();
-		String[] stringArray;
+	public static void main(String[] args) throws Exception {
+
+		FileReader file = new FileReader(
+				"//home//bridgeit//Documents//workspace-sts-3.9.3.RELEASE//Java-Program//src//com//bridgeit//files//BinarySearch.txt");
+
+		BufferedReader br = new BufferedReader(file);
+		String str = br.readLine();
+		System.out.println(str);
+
+		String[] array = str.split("\\s");
+
+		String[] arraySort;
 		String items;
 
-		stringArray = Utility.stringInput(size);
-		stringArray = Utility.bubbleSort(stringArray);
-		Utility.arrayDisplay(stringArray, size);
+		arraySort = Utility.bubbleSort(array);
+		System.out.println(Arrays.toString(arraySort));
+		System.out.println();
 		System.out.println("enter the string key to be searched");
 		items = Utility.inputString();
-		boolean result = Utility.binarySearch(stringArray, items);
-		if (result == true) {
+		if (Utility.binarySearch(array, items))
+
 			System.out.println("string key found");
 
-		} else {
-			System.out.println("key not found");
+		else
 
-		}
+			System.out.println("key not found");
 
 	}
 

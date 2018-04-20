@@ -55,6 +55,7 @@ public class BinarySearch {
 			stringArray = Utility.stringInput(size);
 			stringArray = Utility.bubbleSort(stringArray);
 			Utility.arrayDisplay(stringArray, size);
+			System.out.println();
 			System.out.println("enter the string key to be searched");
 			items = Utility.inputString();
 			start = System.nanoTime();
