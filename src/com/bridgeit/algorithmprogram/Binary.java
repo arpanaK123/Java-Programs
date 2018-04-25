@@ -19,9 +19,6 @@ public class Binary {
 		int number=Utility.inputInteger();
 		String str=Utility.toBinary(number);
 		
-		System.out.println("*************");
-		String nibble=Utility.swapNibble(number);
-		System.out.println("swap nibble="+" " +nibble);
 	}
 
 }

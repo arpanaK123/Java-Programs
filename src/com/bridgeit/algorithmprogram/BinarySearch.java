@@ -38,6 +38,7 @@ public class BinarySearch {
 			array = Utility.integerInput(size);
 			array = Utility.bubbleSort(array);
 			Utility.arrayDisplay(array, size);
+			System.out.println();
 			System.out.println("enter key to be searched");
 			item = Utility.inputInteger();
 			start = System.nanoTime();

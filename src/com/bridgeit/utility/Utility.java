@@ -1,7 +1,15 @@
 package com.bridgeit.utility;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -806,11 +814,11 @@ public class Utility {
 	public static <T extends Comparable<T>> boolean binarySearch(T[] array, T item) {
 		int low = 0;
 		int high = array.length;
-		while (low <= high) {
+		while (low < high) {
 			int mid = (low + high) / 2;
 			if (array[mid].equals(item)) {
 				return true;
-			} else if ((((String) array[mid]).compareTo((String) item)) < 0) {
+			} else if (((array[mid]).compareTo(item)) < 0) {
 				low = mid + 1;
 			} else {
 				high = mid;
@@ -844,6 +852,7 @@ public class Utility {
 		for (int i = 0; i < exponent; i++) {
 			sum = sum * number;
 		}
+		// System.out.println(sum);
 		return sum;
 
 	}
@@ -1097,7 +1106,7 @@ public class Utility {
 
 		}
 
-		System.out.println(temp);
+		//System.out.println(temp);
 		String reverse = "";
 		char reverseArray[] = temp.toCharArray();
 		for (int i = reverseArray.length - 1; i >= 0; i--) {
@@ -1108,36 +1117,56 @@ public class Utility {
 		return reverse;
 	}
 
-	public static String swapNibble(int number) {
-		return null;
+	public static String swapNibble(String number) {
+		char[] array = number.toCharArray();
+		String swap = "";
+		if (array.length < 8) {
+			int count = 8 - array.length;
+			while (count > 0) {
+				swap = swap + "0";
+				count--;
+			}
+		}
+		for (int i = 0; i < array.length; i++) {
+			swap = swap + array[i];
+
+		}
+		array = swap.toCharArray();
+		swap = "";
+		System.out.print(swap);
+		for (int i = array.length / 2; i < array.length; i++) {
+			swap = swap + array[i];
+		}
+		for (int i = 0; i < (array.length / 2); i++) {
+			swap = swap + array[i];
+		}
+		return swap;
 
 	}
 
-	public static void gameTicTacToe()
-	{
-		public static final int empty=0;
-		public static final int cross=0;
-		public static final int naught=0;
-		
-		
-		public static final int play=0;
-		public static final int draw=1;
-		public static final int cross-won=2;
-		public static final int naught-won=3;
-		
-		public static final int row=3,column=3;
-		
-		public static int board[][]=new int [row][column];
-		
-		public static int currentState;
-        
-		public static int currentPlayer;
-		
-		public static int currentRow,currentColumn;
-		
-		int input=Utility.inputInteger();
-		
-		
+	public static int binaryToDecimal(String number) {
+		int sum = 0;
+		int p = 0;
+		for (int i = number.length() - 1; i >= 0; i--) {
+			if (number.charAt(i) == '1') {
+				sum = sum + rangePower(p, 2);
+			}
+			p++;
+
+		}
+		return sum;
 	}
+
+	public static <T extends Comparable<T>> void printWriter(File file, Comparable data) throws IOException {
+		FileWriter fw = new FileWriter(file, true);
+		BufferedWriter bw = new BufferedWriter(fw);
+		PrintWriter pw = new PrintWriter(bw);
+		pw.print(data + " ");
+		pw.close();
+	}
+	
+	
+	
+	
 
 }
