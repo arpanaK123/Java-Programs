@@ -22,6 +22,6 @@ public class UnOrderedList {
 		System.out.println("enter string to be searched");
 		String searchString = Utility.inputString();
 		UnOrderedNodeFunction.searchFunction(searchString, array);
-		UnOrderedNodeFunction.print();
+		UnOrderedNodeFunction.printData();
 	}
 }

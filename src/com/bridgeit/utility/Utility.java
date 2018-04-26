@@ -1106,7 +1106,7 @@ public class Utility {
 
 		}
 
-		//System.out.println(temp);
+	//	System.out.println(temp);
 		String reverse = "";
 		char reverseArray[] = temp.toCharArray();
 		for (int i = reverseArray.length - 1; i >= 0; i--) {
@@ -1117,6 +1117,10 @@ public class Utility {
 		return reverse;
 	}
 
+	/**
+	 * @param number
+	 * @return
+	 */
 	public static String swapNibble(String number) {
 		char[] array = number.toCharArray();
 		String swap = "";
@@ -1144,6 +1148,10 @@ public class Utility {
 
 	}
 
+	/**
+	 * @param number
+	 * @return
+	 */
 	public static int binaryToDecimal(String number) {
 		int sum = 0;
 		int p = 0;
@@ -1157,6 +1165,11 @@ public class Utility {
 		return sum;
 	}
 
+	/**
+	 * @param file
+	 * @param data
+	 * @throws IOException
+	 */
 	public static <T extends Comparable<T>> void printWriter(File file, Comparable data) throws IOException {
 		FileWriter fw = new FileWriter(file, true);
 		BufferedWriter bw = new BufferedWriter(fw);

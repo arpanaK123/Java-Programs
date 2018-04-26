@@ -10,6 +10,7 @@ public class BalancedParentheses {
 
 		System.out.println("enter the parenthesis");
 		String parenthesis = Utility.inputString();
+		// String array[] = parenthesis.split("\\s");
 		char array[] = parenthesis.toCharArray();
 		Stack<Character> stack = new Stack<Character>();
 		for (int i = 0; i < array.length; i++) {
@@ -28,12 +29,18 @@ public class BalancedParentheses {
 			}
 		}
 		boolean result = stack.isEmpty();
-		if (result==true) {
+		if (result == true) {
 			System.out.println("balanced parenthesis");
 		} else {
 			System.out.println("parenthesis is not balanced ");
 		}
-
+		// Stack stack = new Stack();
+		// for (int i = 0; i <= array.length - 1; i++) {
+		// stack.push(array[i]);
+		// }
+		// System.out.println();
+		//
+		// //((Object) stack).disp();
 	}
 
 }

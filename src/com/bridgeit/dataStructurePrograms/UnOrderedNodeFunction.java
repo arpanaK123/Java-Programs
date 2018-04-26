@@ -8,7 +8,7 @@ import com.bridgeit.utility.Utility;
 public class UnOrderedNodeFunction<T> {
 	static Node Head;
 
-	public static <T extends Comparable<T>> void add(T data) {
+	public static <T extends Comparable<T>> void addData(T data) {
 		Node node = new Node();
 		node.data = data;
 		node.nextNode = null;
@@ -23,7 +23,7 @@ public class UnOrderedNodeFunction<T> {
 		}
 	}
 
-	public static <T extends Comparable<T>> void remove(int position) {
+	public static <T extends Comparable<T>> void removeData(int position) {
 		if (position == 0) {
 			Head = Head.nextNode;
 		} else {
@@ -38,7 +38,7 @@ public class UnOrderedNodeFunction<T> {
 		}
 	}
 
-	public static <T extends Comparable<T>> int search(T word) {
+	public static <T extends Comparable<T>> int searchData(T word) {
 		Node temp = Head;
 		int i = 0;
 		while (temp != null) {
@@ -53,7 +53,7 @@ public class UnOrderedNodeFunction<T> {
 
 	}
 
-	public static <T extends Comparable<T>> void print() {
+	public static <T extends Comparable<T>> void printData() {
 		Node node = Head;
 		while (node.nextNode != null) {
 			System.out.println(node.data);
@@ -64,13 +64,13 @@ public class UnOrderedNodeFunction<T> {
 
 	public static void searchFunction(String word, String array[]) throws IOException {
 		for (int i = 0; i < array.length; i++) {
-			UnOrderedNodeFunction.add(array[i]);
+			UnOrderedNodeFunction.addData(array[i]);
 		}
-		int position = UnOrderedNodeFunction.search(word);
+		int position = UnOrderedNodeFunction.searchData(word);
 		if (position == -1) {
-			UnOrderedNodeFunction.add(word);
+			UnOrderedNodeFunction.addData(word);
 		} else {
-			UnOrderedNodeFunction.remove(position);
+			UnOrderedNodeFunction.removeData(position);
 		}
 		File file = new File(
 				"//home//bridgeit//Documents//workspace-sts-3.9.3.RELEASE//Java-Program//src//com//bridgeit//unorderedfiles//unorderedEmpty.txt");
