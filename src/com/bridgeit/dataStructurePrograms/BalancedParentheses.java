@@ -1,3 +1,12 @@
+/*
+ * Purpose:- Take an Arithmetic Expression such as (5+6)∗(7+8)/(4+3)(5+6)∗(7+8)/(4+3)
+ *          where parentheses are used to order the performance of operations. Ensure
+ *          parentheses must appear in a balanced fashion.
+ *
+ *@Author:-Arpana Kumari
+ *Version:-1.0
+ *@Since:-25 April, 2018
+ */
 package com.bridgeit.dataStructurePrograms;
 
 import java.util.Stack;

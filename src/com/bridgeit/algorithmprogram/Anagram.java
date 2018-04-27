@@ -7,9 +7,6 @@
  */
 package com.bridgeit.algorithmprogram;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 import com.bridgeit.utility.Utility;
 
 public class Anagram {

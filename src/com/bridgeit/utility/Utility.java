@@ -13,6 +13,9 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.bridgeit.dataStructurePrograms.MyQueue;
+import com.bridgeit.dataStructurePrograms.Queue;
+
 public class Utility {
 	public Utility() {
 
@@ -578,6 +581,12 @@ public class Utility {
 		}
 	}
 
+	/**
+	 * Funtion of prime number
+	 * 
+	 * @param number:check
+	 *            prime or not
+	 */
 	public static void primeNumber(int number) {
 		int flag;
 		for (int i = 2; i <= number; i++) {
@@ -901,12 +910,12 @@ public class Utility {
 				left = new String[list.length / 2];
 				right = new String[(list.length / 2) + 1];
 			}
-
+			int x = 0;
 			int y = 0;
-			for (int x = 0; x < mid; x++) {
+			for (; x < mid; x++) {
 				left[x] = list[x];
 			}
-			for (int x = 0; x < list.length; x++) {
+			for (; x < list.length; x++) {
 				right[y++] = list[x];
 			}
 			left = mergeSort(left);
@@ -1106,7 +1115,7 @@ public class Utility {
 
 		}
 
-	//	System.out.println(temp);
+		System.out.println(temp);
 		String reverse = "";
 		char reverseArray[] = temp.toCharArray();
 		for (int i = reverseArray.length - 1; i >= 0; i--) {
@@ -1149,8 +1158,10 @@ public class Utility {
 	}
 
 	/**
+	 * Function of convert binary to decimal
+	 * 
 	 * @param number
-	 * @return
+	 * @return:decimal number
 	 */
 	public static int binaryToDecimal(String number) {
 		int sum = 0;
@@ -1166,20 +1177,76 @@ public class Utility {
 	}
 
 	/**
+	 * Generic function for printWriter
+	 * 
 	 * @param file
 	 * @param data
 	 * @throws IOException
 	 */
-	public static <T extends Comparable<T>> void printWriter(File file, Comparable data) throws IOException {
+	public static <T extends Comparable<T>> void printWriter(File file, Comparable<?> data) throws IOException {
 		FileWriter fw = new FileWriter(file, true);
 		BufferedWriter bw = new BufferedWriter(fw);
 		PrintWriter pw = new PrintWriter(bw);
 		pw.print(data + " ");
 		pw.close();
 	}
-	
-	
-	
-	
+
+	/**
+	 * function of Bank cash Counter
+	 * 
+	 * @param people
+	 * @return: total cash
+	 */
+	public static int bankCashCounter(int people) {
+		int cash = 100000;
+		int testCase = people;
+		MyQueue<Integer> queue = new MyQueue<Integer>(testCase);
+		int choice = 0;
+		for (int i = 0; i < testCase; i++) {
+			queue.enQueue(i);
+		}
+		if (testCase > 0) {
+			System.out.println("Bank amount=" + " " + cash);
+
+			while (testCase > 0) {
+				System.out.println("press 1 for withdraw money");
+				System.out.println("press 2 for Deposit money");
+				System.out.println("enter your choice");
+				choice = Utility.inputInteger();
+				if (choice == 1) {
+					int amount = 0, withdrawAmount = 0;
+					while (withdrawAmount == 0) {
+						System.out.println("enter the amount");
+						amount = Utility.inputInteger();
+						if (amount > cash) {
+							System.out.println("your amount is invalid");
+						} else {
+							cash = cash - amount;
+							System.out.println("after withdraw:  ");
+							System.out.println("Bank amount=" + " " + cash);
+
+							withdrawAmount++;
+						}
+					}
+					queue.deQueue();
+				} else if (choice == 2) {
+					int amount = 0, depositAmount = 0;
+					while (depositAmount == 0) {
+						System.out.println("enter how much amount u want to deposit");
+						amount = Utility.inputInteger();
+						depositAmount++;
+					}
+					cash = cash + amount;
+					System.out.print("after deposit:  ");
+					System.out.println("Bank amount=" + " " + cash);
+					queue.deQueue();
+				}
+				testCase--;
+
+			}
+		}
+		return cash;
+
+	}
 
 }

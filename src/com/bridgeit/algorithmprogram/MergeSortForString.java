@@ -15,7 +15,7 @@ public class MergeSortForString {
 
 	public static void main(String[] args) {
 
-		String[] array = { "lapy", "fan", "app", "ball" };
+		String[] array = { "John", "Anthony", "Angelina", "George", "Victor", "Joe", "Jackson" };
 
 		String[] sortedArray = Utility.mergeSort(array);
 		for (int i = 0; i < sortedArray.length; i++) {
