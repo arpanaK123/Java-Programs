@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import com.bridgeit.dataStructurePrograms.MyQueue;
+import com.bridgeit.dataStructurePrograms.Node1;
 import com.bridgeit.dataStructurePrograms.Queue;
 
 public class Utility {
@@ -1108,22 +1109,45 @@ public class Utility {
 	public static String toBinary(int number) {
 		String temp = "";
 		int rem;
+		int count = 0;
+		String printNumber = "";
 		while (number != 0) {
 			rem = number % 2;
+			if (rem == 1) {
+				int power = rangePower(count, 2);
+				if ((number - 1) == 0)
+					printNumber = printNumber + power + " ";
+				else
+					printNumber = printNumber + power + "+";
+
+			}
+			count++;
 			temp = temp + rem;
 			number = number / 2;
 
 		}
 
-		System.out.println(temp);
 		String reverse = "";
 		char reverseArray[] = temp.toCharArray();
 		for (int i = reverseArray.length - 1; i >= 0; i--) {
 			reverse = reverse + reverseArray[i];
 		}
-		// System.out.println(reverse);
+		System.out.println(reverse);
+		System.out.println("padding" + "=" + printNumber);
 
 		return reverse;
+
+		// System.out.println(temp);
+		// System.out.println("padding" + "=" + printNumber);
+
+		// String reverse = "";
+		// char reverseArray[] = temp.toCharArray();
+		// for (int i = reverseArray.length - 1; i >= 0; i--) {
+		// reverse = reverse + reverseArray[i];
+		// }
+		// System.out.println(reverse);
+		//
+		// return reverse;
 	}
 
 	/**
@@ -1194,7 +1218,8 @@ public class Utility {
 	/**
 	 * function of Bank cash Counter
 	 * 
-	 * @param people
+	 * @param people:total
+	 *            number of people
 	 * @return: total cash
 	 */
 	public static int bankCashCounter(int people) {
@@ -1249,4 +1274,284 @@ public class Utility {
 
 	}
 
+	/**
+	 * Function of Palindrome Checker using Dequeue
+	 * 
+	 * @param word:check
+	 *            palindrome or not
+	 * @return: true or false
+	 */
+	public static boolean palindromeChecker(String word) {
+		Queue<Character> queue = new Queue<Character>();
+		char[] array = word.toCharArray();
+		for (int i = 0; i < array.length; i++) {
+			queue.addFront(array[i]);
+		}
+
+		String str = "";
+		for (int i = 0; i < array.length; i++) {
+			Node1<Character> ch = queue.removeFront();
+			str = str + ch.data;
+		}
+		System.out.println(str);
+		if (str.equals(word)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * find the prime in 2D array
+	 */
+	public static void prime2DArray() {
+
+		int array[][] = new int[10][100];
+		int[][] prime = new int[10][100];
+		int count = 1;
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 100; j++) {
+				array[i][j] = count;
+				count++;
+			}
+		}
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 100; j++) {
+				if (prime(array[i][j])) {
+					prime[i][j] = array[i][j];
+				} else {
+					prime[i][j] = 0;
+				}
+			}
+		}
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 100; j++) {
+				if (prime[i][j] != 0) {
+					System.out.print(prime[i][j] + " ");
+				}
+			}
+			System.out.println();
+
+		}
+
+	}
+
+	public static void primeAnagram2DArray(int number) {
+		int num = number;
+		boolean status, status1, status2;
+		int k = 1;
+
+		for (int i = 2; i < number; i++) {
+			for (int j = i + 1; j <= num - 1; j++) {
+				status = Utility.prime(i);
+				status1 = Utility.prime(j);
+				status2 = Utility.anagram(i, j);
+				if (status2 && status1 && status) {
+					while (i > 100 && j > 100 && k == 1) {
+						System.out.println();
+						k = 0;
+					}
+					while (i > 200 && j > 200 && k == 0) {
+						System.out.println();
+						k = 2;
+					}
+					while (i > 300 && j > 300 && k == 12) {
+						System.out.println();
+						k = 3;
+					}
+					while (i > 400 && j > 400 && k == 3) {
+						System.out.println();
+						k = 4;
+					}
+					while (i > 500 && j > 500 && k == 4) {
+						System.out.println();
+						k = 5;
+					}
+					while (i > 600 && j > 600 && k == 5) {
+						System.out.println();
+						k = 6;
+					}
+					while (i > 700 && j > 700 && k == 6) {
+						System.out.println();
+						k = 7;
+					}
+					while (i > 800 && j > 800 && k == 7) {
+						System.out.println();
+						k = 8;
+					}
+					while (i > 900 && j > 900 && k == 8) {
+						System.out.println();
+						k = 9;
+					}
+
+					System.out.print(" " + i + " ");
+
+					System.out.print(" " + j + " ");
+				}
+			}
+		}
+	}
+
+	/**
+	 * PRIME ANAGRAM 2D function
+	 * 
+	 * @param i
+	 * @param j
+	 * @return: string are anagram
+	 */
+	private static boolean anagram(int i, int j) {
+
+		String s1 = Integer.toString(i);
+
+		String s2 = Integer.toString(j);
+		char array1[] = s1.toCharArray();
+		char array2[] = s2.toCharArray();
+		Arrays.sort(array1);
+		Arrays.sort(array2);
+
+		return Arrays.equals(array1, array2);
+	}
+
+	// public static void main(String[]args)
+	// {
+	// int size=1000;
+	// int primeCount=1;
+	// int count=0;
+	// while(primeCount<=size)
+	// {
+	// if(Utility.prime(primeCount))
+	// {
+	// count++;
+	// }
+	// primeCount++;
+	// }
+	// System.out.println();
+	// System.out.println("**********prime Anagram*********");
+	// int []prime=new int[count];
+	// primeCount=1;
+	// int loop=0;
+	// while(primeCount<=size)
+	// {
+	// if(Utility.prime(primeCount))
+	// {
+	// prime[loop]=primeCount;
+	// loop++;
+	// }
+	// primeCount++;
+	// }
+	//
+	// }
+
+	/**
+	 * Prime Anagram 2D-Array Function
+	 * 
+	 * @param prime:
+	 *            check the prime Anagram
+	 * @return
+	 */
+	public static void anagram2D(int prime[]) {
+
+		int count = 0, countAnagram = 0;
+		boolean b;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				b = anagram(prime[i], prime[j]);
+				if (b && count == 0) {
+					countAnagram++;
+					count++;
+					b = false;
+				}
+
+			}
+			if (count > 0) {
+				countAnagram++;
+				count = 0;
+			}
+		}
+		int[] anagramArray = new int[countAnagram];
+		int x = 0;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				b = anagram(prime[i], prime[j]);
+				if (b && count == 0) {
+					anagramArray[x] = prime[j];
+					// System.out.println(anagramArray[x]);
+					x++;
+					count++;
+					b = false;
+
+				}
+			}
+			if (count > 0) {
+				anagramArray[x] = prime[i];
+				x++;
+				count = 0;
+			}
+		}
+		for (int i = 0; i < anagramArray.length; i++) {
+			for (int j = 0; j < anagramArray.length - 1; j++) {
+				if (anagramArray[j] > anagramArray[j + 1]) {
+					int temp = anagramArray[j];
+					anagramArray[j] = anagramArray[j + 1];
+					anagramArray[j + 1] = temp;
+
+				}
+			}
+		}
+		for (int i = 0; i < anagramArray.length; i++) {
+			for (int j = 0; j < anagramArray.length - 1; j++) {
+				if (anagramArray[j] == anagramArray[j + 1]) {
+					anagramArray[j + 1] = 0;
+				}
+				// System.out.println(anagramArray[j]);
+
+			}
+		}
+		int position = 0;
+		for (int i = 0; i < anagramArray.length; i++) {
+			if (anagramArray[i] != 0) {
+				position++;
+			}
+		}
+		int[] array = new int[position + 1];
+		int zz = 1;
+		int yy = 0;
+		for (int i = 0; i < anagramArray.length; i++) {
+			if (anagramArray[i] != 0) {
+				array[yy] = anagramArray[i];
+				// System.out.println(array[yy]);
+				yy++;
+			}
+		}
+		int total[][] = new int[10][100];
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 100; j++) {
+				total[i][j] = zz;
+				// System.out.println(total[i][j]);
+				zz++;
+			}
+		}
+		int xx = 0;
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 100; j++) {
+				if (array[xx] == total[i][j] && xx < array.length) {
+					total[i][j] = array[xx];
+					// System.out.println(total[i][j]);
+					x++;
+				} else {
+					total[i][j] = 0;
+					// x++;
+				}
+			}
+		}
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 100; j++) {
+				// if (total[i][j] != 0) {
+				System.out.print(total[i][j] + " ");
+
+			}
+			System.out.println();
+		}
+
+	}
 }

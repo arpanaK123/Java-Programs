@@ -58,7 +58,7 @@ public class Queue<T> {
 	public Node1<T> removeFront() {
 		Node1<T> f = front;
 		front = front.next;
-		return front;
+		return f;
 	}
 
 	public Node1<T> removeLast() {

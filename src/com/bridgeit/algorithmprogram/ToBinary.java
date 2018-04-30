@@ -17,7 +17,9 @@ public class ToBinary {
 
 		System.out.println("enter number ");
 		int number = Utility.inputInteger();
+		System.out.print("binary number=");
 		Utility.toBinary(number);
+		
 	}
 
 }

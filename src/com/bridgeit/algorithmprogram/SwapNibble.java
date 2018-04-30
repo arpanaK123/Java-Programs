@@ -18,7 +18,7 @@ public class SwapNibble {
 		System.out.println("enter number ");
 		int number = Utility.inputInteger();
 		String s = Utility.toBinary(number);
-		System.out.println(s);
+		//System.out.println(s);
 		System.out.println("swap nibble:");
 		String str = Utility.swapNibble(s);
 		System.out.println(str);
