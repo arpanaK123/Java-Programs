@@ -33,7 +33,8 @@ public class BinarySearch {
 		long stop;
 
 		switch (choice) {
-		case 1: {
+		case 1:
+		{
 
 			array = Utility.integerInput(size);
 			array = Utility.bubbleSort(array);

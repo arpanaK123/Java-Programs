@@ -1554,4 +1554,165 @@ public class Utility {
 		}
 
 	}
+
+	// return true if the given year is a leap year
+	public static boolean leapYear(int year) {
+		if ((year % 4 == 0) && (year % 100 != 0))
+			return true;
+		if (year % 400 == 0)
+			return true;
+		return false;
+	}
+
+	public static int day(int month, int day, int year) {
+		int y0 = year - (14 - month) / 12;
+
+		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+
+		int m0 = month + 12 * ((14 - month) / 12) - 2;
+
+		int d0 = (day + x + ((31 * m0) / 12)) % 7;
+		return d0;
+
+	}
+
+	public static void calender(int month, int year) {
+		int day = 1;
+		int year1 = year - (14 - month) / 12;
+
+		int x = year1 + year1 / 4 - year / 100 + year / 400;
+
+		int month1 = month + 12 * ((14 - month) / 12) - 2;
+
+		int d0 = (day + x + ((31 * month) / 12)) % 7;
+		String[] months = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+				"October", "November", "December" };
+
+		int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		int monthday = 0;
+		for (int i = 0; i < days.length; i++) {
+			if (i == month - 1) {
+				monthday = days[i];
+			}
+		}
+		int[][] totalday = new int[6][7];
+		boolean leap = Utility.leapYear(year);
+		if (leap && month == 1) {
+			monthday = 29;
+		}
+
+		int z = 1;
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 7; j++) {
+				if (i == 0 && j < d0) {
+					totalday[i][j] = -1;
+				} else if (z <= monthday) {
+					totalday[i][j] = z;
+					z++;
+				} else {
+					totalday[i][j] = -1;
+				}
+			}
+		}
+		for (int i = 0; i < 12; i++) {
+			if (month == i + 1) {
+				System.out.print(" "+months[i] + " " + year);
+			}
+		}
+		System.out.println();
+
+		String[] dayname = { "S", "M", "T", "W", "T", "F", "S" };
+		for (int i = 0; i < 7; i++) {
+			System.out.print(" " + dayname[i] + " ");
+		}
+		System.out.println();
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 7; j++) {
+				if (totalday[i][j] != -1) {
+					if (totalday[i][j] < 10) {
+						System.out.print(" " + totalday[i][j] + " ");
+					} else
+						System.out.print(totalday[i][j] + " ");
+				}
+				System.out.print("");
+			}
+			System.out.println();
+		}
+
+	}
+
+	public static int[][] calenderQueue(int month, int year) {
+		int day = 1;
+		int y0 = year - (14 - month) / 12;
+
+		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+
+		int m0 = month + 12 * ((14 - month) / 12) - 2;
+
+		day = (day + x + ((31 * m0) / 12)) % 7;
+
+		String[] months = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+				"October", "November", "December" };
+
+		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+		// if (month == 2 && Utility.leapYear(year))
+		// days[month] = 29;
+		//
+		// System.out.println(" " + months[month] + " " + year);
+		// System.out.println(" S M Tu W Th F S");
+
+		// int d = Utility.day(month, 1, year);
+
+		// print the calendar
+		// for (int i = 0; i < d; i++)
+		// System.out.print(" ");
+		// for (int i = 1; i <= days[month]; i++) {
+		// System.out.printf("%2d ", i);
+		// if (((i + d) % 7 == 0) || (i == days[month]))
+		// System.out.println();
+		// }
+		// return null;
+
+		System.out.println("   " + months[month] + " " + year);
+		System.out.println(" S  M Tu  W Th  F  S");
+
+		int monthDay = 0;
+		for (int i = 0; i < days.length; i++) {
+			if (i == month - 1) {
+				monthDay = days[i];
+				// System.out.println(monthDay);
+			}
+		}
+		int[][] totalDay = new int[6][7];
+		boolean temp = Utility.leapYear(year);
+		if (temp && month == -1) {
+			monthDay = 29;
+		}
+		int z = 1;
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 7; j++) {
+				if (i == 0 && j < day) {
+					totalDay[i][j] = -1;
+				} else if (z < monthDay) {
+					totalDay[i][j] = z;
+				} else {
+					totalDay[i][j] = -1;
+				}
+			}
+
+		}
+		for (int i = 0; i < 12; i++) {
+			if (month == i + 1) {
+				// System.out.println(months[i] + " " + year);
+			}
+		}
+		System.out.println();
+		return totalDay;
+	}
+
+	public static void calenderStack(int month, int year) {
+
+	}
+
 }
