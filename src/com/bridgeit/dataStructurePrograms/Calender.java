@@ -26,32 +26,7 @@ public class Calender {
 			System.out.println("invalid year, enter year 1800 and beyond");
 			System.exit(0);
 		}
-		Utility.calender(month, year);
-		// String[] months = { " ", "January", "February", "March", "April", "May",
-		// "June", "July", "August", "September",
-		// "October", "November", "December" };
-		//
-		// int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		//
-		// // check for leap year
-		// if (month == 2 && Utility.leapYear(year))
-		// days[month] = 29;
-		//
-		// // print calendar header
-		// System.out.println(" " + months[month] + " " + year);
-		// System.out.println(" S M Tu W Th F S");
-		//
-		// // starting day
-		// int d = Utility.day(month, 1, year);
-		//
-		// // print the calendar
-		// for (int i = 0; i < d; i++)
-		// System.out.print(" ");
-		// for (int i = 1; i <= days[month]; i++) {
-		// System.out.printf("%2d ", i);
-		// if (((i + d) % 7 == 0) || (i == days[month]))
-		// System.out.println();
-		// }
+		Utility.calender1(month, year);
 
 	}
 

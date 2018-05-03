@@ -1,9 +1,17 @@
+/*
+ * Purpose:- The WeekDay objects are stored in a Queue implemented using Linked List
+ */
 package com.bridgeit.dataStructurePrograms;
 
 public class LinkedQueue<T> {
 
 	Node1<T> front;
 
+	/**
+	 * Add data into linked list
+	 * 
+	 * @param data
+	 */
 	public void add(T data) {
 		Node1<T> n = new Node1<T>(data);
 		if (front == null) {
@@ -11,13 +19,18 @@ public class LinkedQueue<T> {
 
 		} else {
 			Node1<T> f = front;
-			// f = f.next;
-			// f.next = n;
-			n.next = front;
-			front = n;
+			while (f.next != null)
+				f = f.next;
+			f.next = n;
+
 		}
 	}
 
+	/**
+	 * remove data from linked list
+	 * 
+	 * @return
+	 */
 	public T remove() {
 		Node1<T> f = front;
 		if (front != null)
@@ -25,6 +38,11 @@ public class LinkedQueue<T> {
 		return f.data;
 	}
 
+	/**
+	 * check the list is empty or not
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 
 		if (front == null) {
@@ -35,6 +53,9 @@ public class LinkedQueue<T> {
 		}
 	}
 
+	/**
+	 * display the data of the linked list
+	 */
 	public void display() {
 		Node1<T> temp = front;
 		Integer a = 10;
@@ -43,11 +64,11 @@ public class LinkedQueue<T> {
 
 				if (!(temp.data.equals(-1))) {
 					if (((Integer) (temp.data)).compareTo(a) < 0) {
-						System.out.print(temp.data + " ");
+						System.out.print(temp.data + "  ");
 					} else
 						System.out.print(temp.data + " ");
 				} else
-					System.out.println();
+					System.out.print("   ");
 
 				temp = temp.next;
 			}

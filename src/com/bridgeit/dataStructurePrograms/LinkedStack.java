@@ -1,5 +1,12 @@
 package com.bridgeit.dataStructurePrograms;
 
+/*
+ * Purpose:-store the Queue in two Stacks. Stack here is also implemented using Linked List
+ * 
+ * @Author:-Arpana Kumari
+ * Version:-1.0
+ * @Since:-3 May, 20118
+ */
 public class LinkedStack<T> {
 
 	Node1<T> front;
@@ -16,42 +23,34 @@ public class LinkedStack<T> {
 		}
 	}
 
-	public T remove() {
-		Node1<T> f = front;
-		if (front != null)
-			front = f.next;
-		return f.data;
-	}
-
-	public boolean isEmpty() {
-
-		if (front == null) {
-			return true;
-
-		} else {
-			return false;
-		}
-	}
-
 	public void display() {
-		Node1<T> temp = front;
-		Integer a = 10;
-		if (!isEmpty()) {
-			while (temp != null) {
-
-				if (!(temp.data.equals(-1))) {
-					if (((Integer) (temp.data)).compareTo(a) < 0) {
-						System.out.print(temp.data + " ");
-					} else
-						System.out.print(temp.data + " ");
-				} else
-					System.out.println();
-
-				temp = temp.next;
-			}
-			System.out.println();
-
+		Node1<T> f = front;
+		while (f != null) {
+			System.out.println(f.data);
+			f = f.next;
 		}
 	}
 
+	public void remove() {
+		Node1<T> f = front;
+		front = f.next;
+	}
+
+	public Integer pop() {
+		Node1<T> f = front;
+		Integer temp = (Integer) f.data;
+		front = f.next;
+		return temp;
+
+	}
+
+	public static void main(String[] args) {
+		LinkedStack<Integer> l = new LinkedStack<Integer>();
+		l.add(2);
+		l.add(10);
+		l.add(5);
+		l.display();
+		System.out.println("==");
+		l.display();
+	}
 }

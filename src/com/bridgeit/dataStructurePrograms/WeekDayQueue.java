@@ -1,3 +1,13 @@
+/*
+ * Purpose:-Create the Week Object having a list of WeekDay objects each storing the 
+ *          day (i.e S,M,T,W,Th,..) and the Date (1,2,3..) . The WeekDay objects are
+ *          stored in a Queue implemented using Linked List. Further maintain also a
+ *          Week Object in a Queue to finally display the Calendar
+ *
+ *@Author:-Arpana Kumari
+ *Version:-1.0
+ *@Since:-3 May, 2018
+ */
 package com.bridgeit.dataStructurePrograms;
 
 import com.bridgeit.utility.Utility;
@@ -11,9 +21,9 @@ public class WeekDayQueue {
 		int year = Utility.inputInteger();
 		int[][] calender = Utility.calenderQueue(month, year);
 
-		int[] days = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		String[] days = { "S", "M", "T", "W", "T", "F", "S" };
 		for (int i = 0; i < days.length; i++) {
-			//System.out.print(days[i]+" ");
+			System.out.print(days[i] + "  ");
 		}
 		System.out.println();
 		LinkedQueue<Integer> list[] = new LinkedQueue[6];

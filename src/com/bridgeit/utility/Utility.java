@@ -1336,6 +1336,12 @@ public class Utility {
 
 	}
 
+	/**
+	 * find prime anagram
+	 * 
+	 * @param number:
+	 *            anagram number
+	 */
 	public static void primeAnagram2DArray(int number) {
 		int num = number;
 		boolean status, status1, status2;
@@ -1564,6 +1570,14 @@ public class Utility {
 		return false;
 	}
 
+	/**
+	 * find the weekdays
+	 * 
+	 * @param month
+	 * @param day
+	 * @param year
+	 * @return
+	 */
 	public static int day(int month, int day, int year) {
 		int y0 = year - (14 - month) / 12;
 
@@ -1576,7 +1590,13 @@ public class Utility {
 
 	}
 
-	public static void calender(int month, int year) {
+	/**
+	 * Print the calender
+	 * 
+	 * @param month
+	 * @param year
+	 */
+	public static void calender1(int month, int year) {
 		int day = 1;
 		int year1 = year - (14 - month) / 12;
 
@@ -1584,8 +1604,9 @@ public class Utility {
 
 		int month1 = month + 12 * ((14 - month) / 12) - 2;
 
-		int d0 = (day + x + ((31 * month) / 12)) % 7;
-		String[] months = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+		int day1 = (day + x + ((31 * month1) / 12)) % 7;
+		// System.out.println(day1);
+		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				"October", "November", "December" };
 
 		int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -1604,7 +1625,7 @@ public class Utility {
 		int z = 1;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
-				if (i == 0 && j < d0) {
+				if (i == 0 && j < day1) {
 					totalday[i][j] = -1;
 				} else if (z <= monthday) {
 					totalday[i][j] = z;
@@ -1616,86 +1637,77 @@ public class Utility {
 		}
 		for (int i = 0; i < 12; i++) {
 			if (month == i + 1) {
-				System.out.print(" "+months[i] + " " + year);
+				System.out.print(" " + months[i] + " " + year);
 			}
 		}
 		System.out.println();
 
 		String[] dayname = { "S", "M", "T", "W", "T", "F", "S" };
 		for (int i = 0; i < 7; i++) {
-			System.out.print(" " + dayname[i] + " ");
+			System.out.print(dayname[i] + "  ");
 		}
 		System.out.println();
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
 				if (totalday[i][j] != -1) {
 					if (totalday[i][j] < 10) {
-						System.out.print(" " + totalday[i][j] + " ");
+						System.out.print(totalday[i][j] + "  ");
 					} else
 						System.out.print(totalday[i][j] + " ");
+				} else {
+					System.out.print("   ");
+
 				}
-				System.out.print("");
+				// System.out.print(totalday[i][j]+" ");
 			}
 			System.out.println();
 		}
 
 	}
 
+	/**
+	 * Print the calender using Queue in 2D-Array
+	 * 
+	 * @param month
+	 * @param year
+	 * @return
+	 */
 	public static int[][] calenderQueue(int month, int year) {
 		int day = 1;
-		int y0 = year - (14 - month) / 12;
+		int year1 = year - (14 - month) / 12;
 
-		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+		int x = year1 + year1 / 4 - year / 100 + year / 400;
 
-		int m0 = month + 12 * ((14 - month) / 12) - 2;
+		int month1 = month + 12 * ((14 - month) / 12) - 2;
 
-		day = (day + x + ((31 * m0) / 12)) % 7;
+		int day1 = (day + x + ((31 * month1) / 12)) % 7;
+		// System.out.println(day1);
 
-		String[] months = { "", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+		String[] monthName = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				"October", "November", "December" };
 
-		int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		int[] monthday = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-		// if (month == 2 && Utility.leapYear(year))
-		// days[month] = 29;
-		//
-		// System.out.println(" " + months[month] + " " + year);
-		// System.out.println(" S M Tu W Th F S");
-
-		// int d = Utility.day(month, 1, year);
-
-		// print the calendar
-		// for (int i = 0; i < d; i++)
-		// System.out.print(" ");
-		// for (int i = 1; i <= days[month]; i++) {
-		// System.out.printf("%2d ", i);
-		// if (((i + d) % 7 == 0) || (i == days[month]))
-		// System.out.println();
-		// }
-		// return null;
-
-		System.out.println("   " + months[month] + " " + year);
-		System.out.println(" S  M Tu  W Th  F  S");
-
-		int monthDay = 0;
-		for (int i = 0; i < days.length; i++) {
+		int monthDays = 0;
+		for (int i = 0; i < monthday.length; i++) {
 			if (i == month - 1) {
-				monthDay = days[i];
+				monthDays = monthday[i];
 				// System.out.println(monthDay);
 			}
 		}
 		int[][] totalDay = new int[6][7];
-		boolean temp = Utility.leapYear(year);
-		if (temp && month == -1) {
-			monthDay = 29;
+		boolean result = Utility.leapYear(year);
+		if (result && month == -1) {
+			monthDays = 29;
 		}
 		int z = 1;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
-				if (i == 0 && j < day) {
+				if (i == 0 && j < day1) {
 					totalDay[i][j] = -1;
-				} else if (z < monthDay) {
+				} else if (z <= monthDays) {
 					totalDay[i][j] = z;
+					z++;
 				} else {
 					totalDay[i][j] = -1;
 				}
@@ -1704,15 +1716,42 @@ public class Utility {
 		}
 		for (int i = 0; i < 12; i++) {
 			if (month == i + 1) {
-				// System.out.println(months[i] + " " + year);
+				System.out.println(monthName[i] + " " + year);
 			}
 		}
 		System.out.println();
 		return totalDay;
 	}
 
-	public static void calenderStack(int month, int year) {
+	/**
+	 * Find factorial of the given number
+	 * 
+	 * @param number:
+	 *            find factorial
+	 * @return: factorial number
+	 */
+	public static int findFactorial(int number) {
+		int fact = 1;
+		while (number != 0) {
+			fact = fact * number;
+			number--;
+		}
+		// System.out.println(fact);
+		return fact;
+	}
 
+	/**
+	 * Find Binary Search Tree
+	 * 
+	 * @param nodes:find
+	 *            number of nodes
+	 * @return:total number of tree
+	 */
+	public static int binarySearchTree(int nodes) {
+		int numerator = (findFactorial(2 * nodes));
+		int denumerator = (findFactorial(nodes + 1)) * findFactorial(nodes);
+		int tree = numerator / denumerator;
+		return tree;
 	}
 
 }
