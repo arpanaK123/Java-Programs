@@ -25,7 +25,7 @@ public class LinkedStack<T> {
 
 	public void display() {
 		Node1<T> f = front;
-		while (f != null) {
+		while (f!= null) {
 			System.out.println(f.data);
 			f = f.next;
 		}

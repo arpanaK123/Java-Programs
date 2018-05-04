@@ -1,40 +1,52 @@
+/*
+ * Purpose:-create Stack and check the balance parenthesis
+ */
 package com.bridgeit.dataStructurePrograms;
 
-public class Stack<T extends Comparable<T>> {
+public class Stack<T> {
 
-	static int size = 20;
-	static int top = -1;
+	T[] c;
+	int length;
+	int top;
 
-	static Object[] s = new Object[size];
+	/**
+	 * @param length
+	 */
+	@SuppressWarnings("unchecked")
+	public Stack(int length)
 
-	public static <T extends Comparable<T>> void push(T data) {
-		if (top == size - 1) {
-			System.out.println("stack is full , push operation not possible");
-		} else {
-			++top;
-			s[top] = data;
-		}
+	{
+		this.length = length;
+		c = (T[]) new Object[length];
+		top = 0;
 	}
 
-	public static <T extends Comparable<T>> void pop() {
+	/**
+	 * @param d
+	 */
+	public void push(T d) {
+		c[top] = d;
+		top++;
+	}
+
+	/**
+	 * @return
+	 */
+	public T pop() {
+		return c[top--];
+		
+	}
+
+	public boolean checkPop() {
 		if (top == -1) {
-			System.out.println("stack is empty,pop operation not possible");
-		} else {
-			top--;
+			return true;
 		}
+		return false;
 	}
 
-	public static <T extends Comparable<T>> void disp() {
-		if (top == -1) {
-			System.out.println("stack is empty, display operation not possible");
-		} else {
-			for (int i = 0; i <= top; i++) {
-				System.out.println(s[i] + " ");
-				top--;
-			}
-		}
-	}
-
+	/**
+	 * @return
+	 */
 	public boolean isEmpty() {
 		if (top == 0) {
 			return true;
@@ -42,11 +54,17 @@ public class Stack<T extends Comparable<T>> {
 			return false;
 	}
 
+	/**
+	 * @return
+	 */
 	public int size() {
-		return size();
+		return top;
 	}
 
+	/**
+	 * @return
+	 */
 	public T peek() {
-		return (T) s[top];
+		return c[top];
 	}
 }

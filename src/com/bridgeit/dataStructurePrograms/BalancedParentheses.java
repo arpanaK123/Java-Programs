@@ -19,25 +19,25 @@ public class BalancedParentheses {
 
 		System.out.println("enter the parenthesis");
 		String parenthesis = Utility.inputString();
-		// String array[] = parenthesis.split("\\s");
 		char array[] = parenthesis.toCharArray();
-		Stack<Character> stack = new Stack<Character>();
+		Stack<Character> stack1 = new Stack<Character>();
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] == '(') {
-				stack.push(array[i]);
+				stack1.push(array[i]);
 			} else if (array[i] == ')') {
-				stack.pop();
-			} else if (array[i] == '{') {
-				stack.push(array[i]);
-			} else if (array[i] == '}') {
-				stack.pop();
-			} else if (array[i] == '[') {
-				stack.push(array[i]);
-			} else if (array[i] == ']') {
-				stack.pop();
+				stack1.pop();
 			}
+
+			// stack1.push(array[i]);
+			// } else if (array[i] == '}') {
+			// stack1.pop();
+			// } else if (array[i] == '[') {
+			// stack1.push(array[i]);
+			// } else if (array[i] == ']') {
+			// stack1.pop();
+			// }
 		}
-		boolean result = stack.isEmpty();
+		boolean result = stack1.isEmpty();
 		if (result == true) {
 			System.out.println("balanced parenthesis");
 		} else {

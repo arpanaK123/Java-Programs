@@ -1,3 +1,10 @@
+/*
+ * Purpose:-create Hash-Chain of Hashing function
+ * 
+ * @Author:-Arpana Kumari
+ * Version:-1.0
+ * @Since:-4 May, 2018
+ */
 package com.bridgeit.dataStructurePrograms;
 
 import java.io.File;
@@ -21,12 +28,13 @@ public class HashChain {
 
 	public static void insert(int value) {
 		size++;
-		Node1 n = null;
 		int pos = myhash(value);
+		Node1 n = new Node1(value);
 		if (table[pos] == null) {
 			table[pos] = n;
 		} else {
 			n.next = table[pos];
+			table[pos] = n;
 		}
 	}
 
@@ -73,10 +81,10 @@ public class HashChain {
 
 	public static void write() {
 		try {
-			PrintStream p = new PrintStream(new File(file.txt));
+			PrintStream p = new PrintStream(new File("file1.txt"));
 			System.setOut(p);
 			for (int i = 0; i < table.length; i++) {
-				Node1 t;
+				Node1 t = null;
 				System.out.println(t.data + " ");
 				t = table[i];
 				while (t != null) {

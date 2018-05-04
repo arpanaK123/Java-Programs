@@ -8,13 +8,17 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.bridgeit.dataStructurePrograms.LinkedQueue;
+import com.bridgeit.dataStructurePrograms.LinkedStack;
 import com.bridgeit.dataStructurePrograms.MyQueue;
 import com.bridgeit.dataStructurePrograms.Node1;
+import com.bridgeit.dataStructurePrograms.OrderedLinkedList;
 import com.bridgeit.dataStructurePrograms.Queue;
 
 public class Utility {
@@ -1327,7 +1331,7 @@ public class Utility {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
 				if (prime[i][j] != 0) {
-					System.out.print(prime[i][j] + " ");
+					System.out.print(prime[i][j] + "   ");
 				}
 			}
 			System.out.println();
@@ -1342,16 +1346,16 @@ public class Utility {
 	 * @param number:
 	 *            anagram number
 	 */
-	public static void primeAnagram2DArray(int number) {
-		int num = number;
+	public static void primeAnagram2DArray(int[] prime) {
+
 		boolean status, status1, status2;
 		int k = 1;
 
-		for (int i = 2; i < number; i++) {
-			for (int j = i + 1; j <= num - 1; j++) {
+		for (int i = 2; i < prime.length; i++) {
+			for (int j = i + 1; j <= prime.length - 1; j++) {
 				status = Utility.prime(i);
 				status1 = Utility.prime(j);
-				status2 = Utility.anagram(i, j);
+				status2 = Utility.anagramCheck(i, j);
 				if (status2 && status1 && status) {
 					while (i > 100 && j > 100 && k == 1) {
 						System.out.println();
@@ -1405,17 +1409,33 @@ public class Utility {
 	 * @param j
 	 * @return: string are anagram
 	 */
-	private static boolean anagram(int i, int j) {
+	private static boolean anagramCheck(int i, int j) {
 
 		String s1 = Integer.toString(i);
 
 		String s2 = Integer.toString(j);
 		char array1[] = s1.toCharArray();
 		char array2[] = s2.toCharArray();
-		Arrays.sort(array1);
-		Arrays.sort(array2);
+		s1 = arrange(array1);
+		s2 = arrange(array2);
+		return s1.equals(s2);
+	}
 
-		return Arrays.equals(array1, array2);
+	public static String arrange(char[] array) {
+		String s = "";
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array.length - 1; j++) {
+				if (array[j] > array[j + 1]) {
+					char temp = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < array.length; i++) {
+			s = s + array[i];
+		}
+		return s;
 	}
 
 	// public static void main(String[]args)
@@ -1461,7 +1481,7 @@ public class Utility {
 		boolean b;
 		for (int i = 0; i < prime.length; i++) {
 			for (int j = i + 1; j < prime.length; j++) {
-				b = anagram(prime[i], prime[j]);
+				b = anagramCheck(prime[i], prime[j]);
 				if (b && count == 0) {
 					countAnagram++;
 					count++;
@@ -1478,7 +1498,7 @@ public class Utility {
 		int x = 0;
 		for (int i = 0; i < prime.length; i++) {
 			for (int j = i + 1; j < prime.length; j++) {
-				b = anagram(prime[i], prime[j]);
+				b = anagramCheck(prime[i], prime[j]);
 				if (b && count == 0) {
 					anagramArray[x] = prime[j];
 					// System.out.println(anagramArray[x]);
@@ -1543,7 +1563,7 @@ public class Utility {
 				if (array[xx] == total[i][j] && xx < array.length) {
 					total[i][j] = array[xx];
 					// System.out.println(total[i][j]);
-					x++;
+					xx++;
 				} else {
 					total[i][j] = 0;
 					// x++;
@@ -1552,13 +1572,14 @@ public class Utility {
 		}
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
-				// if (total[i][j] != 0) {
-				System.out.print(total[i][j] + " ");
+				if (total[i][j] != 0) {
+					System.out.print(total[i][j] + " ");
 
+				}
 			}
 			System.out.println();
-		}
 
+		}
 	}
 
 	// return true if the given year is a leap year
@@ -1754,4 +1775,189 @@ public class Utility {
 		return tree;
 	}
 
+	/**
+	 * Prime anagram using stack
+	 * 
+	 * @param prime
+	 */
+	public static void primeAnagramLinkedStack(int[] prime) {
+
+		int count = 0, countAnagram = 0;
+		boolean b;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				b = anagramCheck(prime[i], prime[j]);
+				if (b && count == 0) {
+					countAnagram++;
+					count++;
+					b = false;
+				}
+
+			}
+			if (count > 0) {
+				countAnagram++;
+				count = 0;
+			}
+		}
+		int[] anagramArray = new int[countAnagram];
+		int x = 0;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				b = anagramCheck(prime[i], prime[j]);
+				if (b && count == 0) {
+					anagramArray[x] = prime[j];
+					// System.out.println(anagramArray[x]);
+					x++;
+					count++;
+					b = false;
+
+				}
+			}
+
+			if (count > 0) {
+				anagramArray[x] = prime[i];
+				x++;
+				count = 0;
+			}
+		}
+		for (int i = 0; i < anagramArray.length; i++) {
+			for (int j = 0; j < anagramArray.length - 1; j++) {
+				if (anagramArray[j] > anagramArray[j + 1]) {
+					int temp = anagramArray[j];
+					anagramArray[j] = anagramArray[j + 1];
+					anagramArray[j + 1] = temp;
+
+				}
+			}
+		}
+		for (int i = 0; i < anagramArray.length; i++) {
+			for (int j = 0; j < anagramArray.length - 1; j++) {
+				if (anagramArray[j] == anagramArray[j + 1]) {
+					anagramArray[j + 1] = 0;
+				}
+				// System.out.println(anagramArray[j]);
+
+			}
+		}
+		int position = 0;
+		for (int i = 0; i < anagramArray.length; i++) {
+			if (anagramArray[i] != 0) {
+				position++;
+			}
+		}
+
+		int[] array = new int[position + 1];
+		int zz = 1;
+		int yy = 0;
+		for (int i = 0; i < anagramArray.length; i++) {
+			if (anagramArray[i] != 0) {
+				array[yy] = anagramArray[i];
+				// System.out.println(array[yy]);
+				yy++;
+			}
+
+		}
+		LinkedStack<Integer> l = new LinkedStack<Integer>();
+		for (int i = 0; i < array.length - 1; i++) {
+			l.add(array[i]);
+		}
+		l.display();
+	}
+
+	/**
+	 * Prime Anagram using Queue
+	 * 
+	 * @param prime
+	 */
+	public static void primeAnagramLinkedQueue(int[] prime)
+
+	{
+		int count = 0, countAnagram = 0;
+		boolean b;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				b = anagramCheck(prime[i], prime[j]);
+				if (b && count == 0) {
+					countAnagram++;
+					count++;
+					b = false;
+				}
+
+			}
+			if (count > 0) {
+				countAnagram++;
+				count = 0;
+			}
+		}
+		int[] anagramArray = new int[countAnagram];
+		int x = 0;
+		for (int i = 0; i < prime.length; i++) {
+			for (int j = i + 1; j < prime.length; j++) {
+				b = anagramCheck(prime[i], prime[j]);
+				if (b && count == 0) {
+					anagramArray[x] = prime[j];
+					// System.out.println(anagramArray[x]);
+					x++;
+					count++;
+					b = false;
+
+				}
+			}
+
+			if (count > 0) {
+				anagramArray[x] = prime[i];
+				x++;
+				count = 0;
+			}
+		}
+		for (int i = 0; i < anagramArray.length; i++) {
+			for (int j = 0; j < anagramArray.length - 1; j++) {
+				if (anagramArray[j] > anagramArray[j + 1]) {
+					int temp = anagramArray[j];
+					anagramArray[j] = anagramArray[j + 1];
+					anagramArray[j + 1] = temp;
+
+				}
+			}
+		}
+		for (int i = 0; i < anagramArray.length; i++) {
+			for (int j = 0; j < anagramArray.length - 1; j++) {
+				if (anagramArray[j] == anagramArray[j + 1]) {
+					anagramArray[j + 1] = 0;
+				}
+				// System.out.println(anagramArray[j]);
+
+			}
+		}
+		int position = 0;
+		for (int i = 0; i < anagramArray.length; i++) {
+			if (anagramArray[i] != 0) {
+				position++;
+			}
+		}
+
+		int[] array = new int[position + 1];
+		int zz = 1;
+		int yy = 0;
+		for (int i = 0; i < anagramArray.length; i++) {
+			if (anagramArray[i] != 0) {
+				array[yy] = anagramArray[i];
+				// System.out.println(array[yy]);
+				yy++;
+			}
+
+		}
+		LinkedQueue<Integer> l = new LinkedQueue<Integer>();
+		for (int i = 0; i < array.length - 1; i++) {
+			l.add(array[i]);
+		}
+		l.display();
+	}
+
+	public static void orderedList(int searchnum) throws Exception {
+		OrderedLinkedList<String> l = new OrderedLinkedList<String>();
+		File file = new File("ordered.txt");
+		BufferedReader br = new BufferedReader(new FileReader(file));
+
+	}
 }

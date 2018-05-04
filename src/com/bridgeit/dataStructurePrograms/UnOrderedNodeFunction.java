@@ -21,6 +21,7 @@ public class UnOrderedNodeFunction<T> {
 		if (Head == null) {
 			Head = node;
 		} else {
+			@SuppressWarnings("unchecked")
 			Node<T> temp = (Node<T>) Head;
 			while (temp.nextNode != null) {
 				temp = temp.nextNode;
@@ -37,6 +38,7 @@ public class UnOrderedNodeFunction<T> {
 		if (position == 0) {
 			Head = Head.nextNode;
 		} else {
+			@SuppressWarnings("unchecked")
 			Node<T> n = (Node<T>) Head;
 			Node<T> temp = null;
 			for (int i = 0; i < position - 1; i++) {
@@ -49,6 +51,7 @@ public class UnOrderedNodeFunction<T> {
 	}
 
 	public static <T extends Comparable<T>> int searchData(T word) {
+		@SuppressWarnings("unchecked")
 		Node<T> temp = (Node<T>) Head;
 		int i = 0;
 		while (temp != null) {
@@ -64,6 +67,7 @@ public class UnOrderedNodeFunction<T> {
 	}
 
 	public static <T extends Comparable<T>> void printData() {
+		@SuppressWarnings("unchecked")
 		Node<T> node = (Node<T>) Head;
 		while (node.nextNode != null) {
 			System.out.println(node.data);
