@@ -10,6 +10,11 @@ package com.bridgeit.dataStructurePrograms;
 public class StackLinkedCalender<T> {
 	Node1<T> front;
 
+	/**
+	 * Function to add value
+	 * 
+	 * @param temp
+	 */
 	public void add(Integer temp) {
 		Node1<T> n = new Node1(temp);
 		if (front == null) {
@@ -20,6 +25,9 @@ public class StackLinkedCalender<T> {
 		}
 	}
 
+	/**
+	 * Function to display the value
+	 */
 	public void display() {
 		Node1<T> f = front;
 		int i = 1;
@@ -33,14 +41,16 @@ public class StackLinkedCalender<T> {
 			if (i % 7 == 0) {
 				System.out.println();
 			} else {
-				System.out.print("  ");
+				System.out.print(" ");
 			}
-			//System.out.print("");
 			f = f.next;
 			i++;
 		}
 	}
 
+	/**
+	 * Function to remove the value
+	 */
 	public void remove() {
 		Node1<T> f = front;
 		front = f.next;

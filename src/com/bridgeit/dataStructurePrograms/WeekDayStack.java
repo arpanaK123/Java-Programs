@@ -22,7 +22,7 @@ public class WeekDayStack {
 		String[] days = { "S", "M", "T", "W", "T", "F", "S" };
 
 		for (int i = 0; i < days.length; i++)
-			System.out.print(days[i] + "    ");
+			System.out.print(days[i] + "   ");
 
 		System.out.println();
 		LinkedStack<Integer> list = new LinkedStack<>();

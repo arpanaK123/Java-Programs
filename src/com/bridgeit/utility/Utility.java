@@ -21,6 +21,7 @@ import com.bridgeit.dataStructurePrograms.Node1;
 import com.bridgeit.dataStructurePrograms.OrderedLinkedList;
 import com.bridgeit.dataStructurePrograms.Queue;
 
+@SuppressWarnings("unused")
 public class Utility {
 	public Utility() {
 
@@ -236,6 +237,7 @@ public class Utility {
 	 */
 	public static void gambler(int number, int stake, int goal) {
 		double win = 0;
+		@SuppressWarnings("unused")
 		double bets = 0;
 		double loss = 0;
 		for (int i = 1; i <= number; i++) {
@@ -970,8 +972,12 @@ public class Utility {
 	 * @param amount
 	 */
 	public static void amountChange(int amount) {
-		int a, b, c, d, e, f, g;
-
+		int a, b, c, d, e, f, g, h;
+		while (amount >= 1000) {
+			h = amount / 1000;
+			amount = amount % 1000;
+			System.out.println("number of 1000 notes=  " + h);
+		}
 		while (amount >= 500) {
 			a = amount / 500;
 			amount = amount % 500;
@@ -1141,17 +1147,6 @@ public class Utility {
 
 		return reverse;
 
-		// System.out.println(temp);
-		// System.out.println("padding" + "=" + printNumber);
-
-		// String reverse = "";
-		// char reverseArray[] = temp.toCharArray();
-		// for (int i = reverseArray.length - 1; i >= 0; i--) {
-		// reverse = reverse + reverseArray[i];
-		// }
-		// System.out.println(reverse);
-		//
-		// return reverse;
 	}
 
 	/**
@@ -1248,7 +1243,7 @@ public class Utility {
 						System.out.println("enter the amount");
 						amount = Utility.inputInteger();
 						if (amount > cash) {
-							System.out.println("your amount is invalid");
+							System.out.println("your amount is invalid,plz come next time");
 						} else {
 							cash = cash - amount;
 							System.out.println("after withdraw:  ");
@@ -1438,36 +1433,6 @@ public class Utility {
 		return s;
 	}
 
-	// public static void main(String[]args)
-	// {
-	// int size=1000;
-	// int primeCount=1;
-	// int count=0;
-	// while(primeCount<=size)
-	// {
-	// if(Utility.prime(primeCount))
-	// {
-	// count++;
-	// }
-	// primeCount++;
-	// }
-	// System.out.println();
-	// System.out.println("**********prime Anagram*********");
-	// int []prime=new int[count];
-	// primeCount=1;
-	// int loop=0;
-	// while(primeCount<=size)
-	// {
-	// if(Utility.prime(primeCount))
-	// {
-	// prime[loop]=primeCount;
-	// loop++;
-	// }
-	// primeCount++;
-	// }
-	//
-	// }
-
 	/**
 	 * Prime Anagram 2D-Array Function
 	 * 
@@ -1501,7 +1466,6 @@ public class Utility {
 				b = anagramCheck(prime[i], prime[j]);
 				if (b && count == 0) {
 					anagramArray[x] = prime[j];
-					// System.out.println(anagramArray[x]);
 					x++;
 					count++;
 					b = false;
@@ -1529,7 +1493,6 @@ public class Utility {
 				if (anagramArray[j] == anagramArray[j + 1]) {
 					anagramArray[j + 1] = 0;
 				}
-				// System.out.println(anagramArray[j]);
 
 			}
 		}
@@ -1545,7 +1508,6 @@ public class Utility {
 		for (int i = 0; i < anagramArray.length; i++) {
 			if (anagramArray[i] != 0) {
 				array[yy] = anagramArray[i];
-				// System.out.println(array[yy]);
 				yy++;
 			}
 		}
@@ -1553,7 +1515,6 @@ public class Utility {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
 				total[i][j] = zz;
-				// System.out.println(total[i][j]);
 				zz++;
 			}
 		}
@@ -1562,7 +1523,6 @@ public class Utility {
 			for (int j = 0; j < 100; j++) {
 				if (array[xx] == total[i][j] && xx < array.length) {
 					total[i][j] = array[xx];
-					// System.out.println(total[i][j]);
 					xx++;
 				} else {
 					total[i][j] = 0;
@@ -1573,7 +1533,7 @@ public class Utility {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 100; j++) {
 				if (total[i][j] != 0) {
-					System.out.print(total[i][j] + " ");
+					System.out.print(total[i][j] + "  ");
 
 				}
 			}
@@ -1612,7 +1572,7 @@ public class Utility {
 	}
 
 	/**
-	 * Print the calender
+	 * Function to Print the calender
 	 * 
 	 * @param month
 	 * @param year
@@ -1626,7 +1586,6 @@ public class Utility {
 		int month1 = month + 12 * ((14 - month) / 12) - 2;
 
 		int day1 = (day + x + ((31 * month1) / 12)) % 7;
-		// System.out.println(day1);
 		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				"October", "November", "December" };
 
@@ -1679,7 +1638,6 @@ public class Utility {
 					System.out.print("   ");
 
 				}
-				// System.out.print(totalday[i][j]+" ");
 			}
 			System.out.println();
 		}
@@ -1757,7 +1715,6 @@ public class Utility {
 			fact = fact * number;
 			number--;
 		}
-		// System.out.println(fact);
 		return fact;
 	}
 
@@ -1847,6 +1804,7 @@ public class Utility {
 		}
 
 		int[] array = new int[position + 1];
+		@SuppressWarnings("unused")
 		int zz = 1;
 		int yy = 0;
 		for (int i = 0; i < anagramArray.length; i++) {
@@ -1896,7 +1854,6 @@ public class Utility {
 				b = anagramCheck(prime[i], prime[j]);
 				if (b && count == 0) {
 					anagramArray[x] = prime[j];
-					// System.out.println(anagramArray[x]);
 					x++;
 					count++;
 					b = false;
@@ -1925,7 +1882,6 @@ public class Utility {
 				if (anagramArray[j] == anagramArray[j + 1]) {
 					anagramArray[j + 1] = 0;
 				}
-				// System.out.println(anagramArray[j]);
 
 			}
 		}
@@ -1937,12 +1893,12 @@ public class Utility {
 		}
 
 		int[] array = new int[position + 1];
+		@SuppressWarnings("unused")
 		int zz = 1;
 		int yy = 0;
 		for (int i = 0; i < anagramArray.length; i++) {
 			if (anagramArray[i] != 0) {
 				array[yy] = anagramArray[i];
-				// System.out.println(array[yy]);
 				yy++;
 			}
 
@@ -1954,10 +1910,38 @@ public class Utility {
 		l.display();
 	}
 
-	public static void orderedList(int searchnum) throws Exception {
+	/**
+	 * Ordered list function using Linked List
+	 * 
+	 * @param searchnum
+	 * @throws Exception
+	 */
+	public static void orderedList(String searchnum) throws Exception {
 		OrderedLinkedList<String> l = new OrderedLinkedList<String>();
-		File file = new File("ordered.txt");
+		File file = new File("ordered");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 
+		String str = "";
+		String stint;
+		while ((stint = br.readLine()) != null) {
+			str = str + stint + " ";
+		}
+		br.close();
+
+		for (String filenum : str.split("\\s", 0)) {
+			l.add(filenum);
+		}
+		System.out.println("Before search");
+		l.display();
+		boolean result = l.search(searchnum);
+		if (result) {
+			l.remove(searchnum);
+		} else {
+			l.add(searchnum);
+		}
+		System.out.println("***********");
+		System.out.println("after searching");
+		l.display();
+		l.write();
 	}
 }

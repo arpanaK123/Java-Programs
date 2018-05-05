@@ -33,14 +33,12 @@ public class PrimeAnagram2DArray {
 		while (primeCount <= size) {
 			if (Utility.prime(primeCount)) {
 				prime[loop] = primeCount;
-				//System.out.println(prime[loop]);
 				loop++;
 				
 			}
 			primeCount++;
 		}
 		Utility.anagram2D(prime);
-//Utility.primeAnagram2DArray(prime);
 	}
 
 }

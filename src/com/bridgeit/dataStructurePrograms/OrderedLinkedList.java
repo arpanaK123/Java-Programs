@@ -13,6 +13,11 @@ import java.io.PrintStream;
 public class OrderedLinkedList<T> {
 	Node1<T> front;
 
+	/**
+	 * Function to add the data in the linked list
+	 * 
+	 * @param data
+	 */
 	public void add(T data) {
 		Node1<T> n = new Node1<T>(data);
 		if (front == null) {
@@ -26,13 +31,19 @@ public class OrderedLinkedList<T> {
 		}
 	}
 
+	/**
+	 * Function to search the data in the linked list
+	 * 
+	 * @param item
+	 * @return
+	 */
 	public boolean search(T item) {
 		int count = 0;
 		if (front == null) {
 			return false;
 		} else {
 			Node1<T> f = front;
-			while (f.next != null) {
+			while (f != null) {
 				if (item.equals(f.data)) {
 					count++;
 					break;
@@ -49,6 +60,11 @@ public class OrderedLinkedList<T> {
 
 	}
 
+	/**
+	 * Function to append the data in linked list
+	 * 
+	 * @param data
+	 */
 	public void addAgain(T data) {
 		Node1<T> n = new Node1<T>(data);
 		n.data = data;
@@ -60,6 +76,9 @@ public class OrderedLinkedList<T> {
 		temp.next = n;
 	}
 
+	/**
+	 * Function to display the data of the linked list
+	 */
 	public void display() {
 		Node1<T> temp = front;
 		while (temp != null) {
@@ -68,11 +87,14 @@ public class OrderedLinkedList<T> {
 		}
 	}
 
+	/**
+	 * Function to write the data inside file
+	 */
 	public void write() {
 		Node1<T> temp = front;
 		try {
-			PrintStream ps = new PrintStream(new File("ordered.txt"));
-			System.out.println(ps);
+			PrintStream ps = new PrintStream(new File("ordered"));
+			System.setOut(ps);
 			while (temp != null) {
 				System.out.println(temp.data);
 				temp = temp.next;
@@ -82,6 +104,12 @@ public class OrderedLinkedList<T> {
 		}
 	}
 
+	/**
+	 * Function to find the index of data
+	 * 
+	 * @param item
+	 * @return
+	 */
 	public int index(T item) {
 		int count = 0, i = 0;
 		if (front == null) {
@@ -105,6 +133,11 @@ public class OrderedLinkedList<T> {
 			return -1;
 	}
 
+	/**
+	 * pop function of linked list
+	 * 
+	 * @param pos
+	 */
 	public void pop(int pos) {
 		Node1<T> temp = front;
 		int i = 1;
@@ -131,6 +164,11 @@ public class OrderedLinkedList<T> {
 			return false;
 	}
 
+	/**
+	 * Function to remove data inside the linked list
+	 * 
+	 * @param item
+	 */
 	public void remove(T item) {
 		Node1<T> temp = front, prev = null;
 		if (temp.data.equals(item)) {
@@ -150,6 +188,12 @@ public class OrderedLinkedList<T> {
 		prev.next = temp.next;
 	}
 
+	/**
+	 * Function to insert the value with position inside linkd list
+	 * 
+	 * @param pos
+	 * @param data
+	 */
 	public void insert(int pos, T data) {
 		Node1<T> n = new Node1<T>(data);
 		n.data = data;
@@ -180,6 +224,11 @@ public class OrderedLinkedList<T> {
 		return i;
 	}
 
+	/**
+	 * Function to add the data in front in linked list
+	 * 
+	 * @param data
+	 */
 	public void addFront(T data) {
 		Node1<T> n = new Node1<T>(data);
 		Node1<T> temp = front;
@@ -218,52 +267,6 @@ public class OrderedLinkedList<T> {
 			pos = pos.next;
 			front = front.next;
 		}
-	}
-
-	public static void main(String[] args) {
-		OrderedLinkedList<Integer> l = new OrderedLinkedList<Integer>();
-		l.add(1);
-		l.add(2);
-		l.add(4);
-		l.add(5);
-		l.add(3);
-		l.display();
-		System.out.println("------------");
-		System.out.println("pop print");
-		l.pop();
-		System.out.println("--------------");
-		System.out.println("pop at position");
-		l.pop();
-		System.out.println("--------------");
-		System.out.println("it is empty");
-		System.out.println(l.isEmpty());
-		System.out.println("---------------");
-		System.out.println("add again");
-		l.addAgain(6);
-		l.pop();
-		System.out.println("---------");
-		System.out.println("size of list");
-		l.size();
-
-		System.out.println("-----------");
-		System.out.println("search element");
-		l.search(10);
-		System.out.println("---------------");
-
-		int index = l.index(6);
-
-		if (index == -1) {
-			System.out.println("invalid index");
-
-		} else {
-			System.out.println("present at index=  " + index);
-		}
-		System.out.println("-----------");
-		System.out.println("data inserted");
-		l.insert(4, 10);
-		System.out.println("------------");
-		System.out.println("list ");
-		l.display();
 	}
 
 }

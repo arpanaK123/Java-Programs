@@ -14,6 +14,7 @@ import com.bridgeit.utility.Utility;
 
 public class WeekDayQueue {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		System.out.println("enter the month");
 		int month = Utility.inputInteger();

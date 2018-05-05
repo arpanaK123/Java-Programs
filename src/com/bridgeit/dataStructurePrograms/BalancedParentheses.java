@@ -20,22 +20,16 @@ public class BalancedParentheses {
 		System.out.println("enter the parenthesis");
 		String parenthesis = Utility.inputString();
 		char array[] = parenthesis.toCharArray();
-		Stack<Character> stack1 = new Stack<Character>();
+		StackBalance<Character> stack1 = new StackBalance<Character>(array.length);
+
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] == '(') {
 				stack1.push(array[i]);
+
 			} else if (array[i] == ')') {
 				stack1.pop();
 			}
 
-			// stack1.push(array[i]);
-			// } else if (array[i] == '}') {
-			// stack1.pop();
-			// } else if (array[i] == '[') {
-			// stack1.push(array[i]);
-			// } else if (array[i] == ']') {
-			// stack1.pop();
-			// }
 		}
 		boolean result = stack1.isEmpty();
 		if (result == true) {
@@ -43,13 +37,7 @@ public class BalancedParentheses {
 		} else {
 			System.out.println("parenthesis is not balanced ");
 		}
-		// Stack stack = new Stack();
-		// for (int i = 0; i <= array.length - 1; i++) {
-		// stack.push(array[i]);
-		// }
-		// System.out.println();
-		//
-		// //((Object) stack).disp();
+
 	}
 
 }

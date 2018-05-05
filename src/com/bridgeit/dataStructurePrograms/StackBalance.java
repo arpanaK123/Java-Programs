@@ -3,17 +3,16 @@
  */
 package com.bridgeit.dataStructurePrograms;
 
-public class Stack<T> {
+public class StackBalance<T> {
 
 	T[] c;
 	int length;
 	int top;
 
 	/**
-	 * @param length
 	 */
 	@SuppressWarnings("unchecked")
-	public Stack(int length)
+	public StackBalance(int length)
 
 	{
 		this.length = length;
@@ -22,6 +21,8 @@ public class Stack<T> {
 	}
 
 	/**
+	 * Push function
+	 * 
 	 * @param d
 	 */
 	public void push(T d) {
@@ -30,18 +31,19 @@ public class Stack<T> {
 	}
 
 	/**
+	 * 
 	 * @return
 	 */
 	public T pop() {
-		return c[top--];
-		
-	}
-
-	public boolean checkPop() {
-		if (top == -1) {
-			return true;
+		try {
+			if (top >= 0) {
+				return c[top--];
+			}
+		} catch (Exception e) {
+			System.out.println("not balanced");
+			// return c[top--];
 		}
-		return false;
+		return c[top--];
 	}
 
 	/**

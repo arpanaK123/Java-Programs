@@ -1,4 +1,6 @@
-
+/*
+ * Purpose:-Create the function of unordered list using linked list
+ */
 package com.bridgeit.dataStructurePrograms;
 
 import java.io.File;
@@ -31,6 +33,7 @@ public class UnOrderedNodeFunction<T> {
 	}
 
 	/**
+	 * Function to remove data
 	 * 
 	 * @param position
 	 */
@@ -50,6 +53,12 @@ public class UnOrderedNodeFunction<T> {
 		}
 	}
 
+	/**
+	 * Function to search data
+	 * 
+	 * @param word
+	 * @return
+	 */
 	public static <T extends Comparable<T>> int searchData(T word) {
 		@SuppressWarnings("unchecked")
 		Node<T> temp = (Node<T>) Head;
@@ -66,6 +75,9 @@ public class UnOrderedNodeFunction<T> {
 
 	}
 
+	/**
+	 * Function to print data
+	 */
 	public static <T extends Comparable<T>> void printData() {
 		@SuppressWarnings("unchecked")
 		Node<T> node = (Node<T>) Head;
@@ -76,6 +88,13 @@ public class UnOrderedNodeFunction<T> {
 		System.out.println(node.data);
 	}
 
+	/**
+	 * Function to search value
+	 * 
+	 * @param word
+	 * @param array
+	 * @throws IOException
+	 */
 	public static void searchFunction(String word, String array[]) throws IOException {
 		for (int i = 0; i < array.length; i++) {
 			UnOrderedNodeFunction.addData(array[i]);

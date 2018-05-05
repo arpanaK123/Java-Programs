@@ -11,6 +11,7 @@
 package com.bridgeit.dataStructurePrograms;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -25,18 +26,13 @@ public class HashingFunction {
 		int size = Utility.inputInteger();
 		HashChain hs = new HashChain(size);
 
-		FileReader file = new FileReader("file.txt");
+		File file = new File("file");
 
-		BufferedReader br = new BufferedReader(file);
-		String str = br.readLine();
-		System.out.println("the files contains are:");
-		System.out.println(str);
-
+		BufferedReader br = new BufferedReader(new FileReader(file));
 		String filestore = "";
 		String readsfile;
 		while ((readsfile = br.readLine()) != null) {
 			filestore = filestore + readsfile + " ";
-			System.out.println(filestore);
 
 		}
 		br.close();

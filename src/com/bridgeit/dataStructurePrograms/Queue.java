@@ -1,3 +1,6 @@
+/*
+ * Purpose:-Create a Queue Function to check for the Palindrome
+ */
 package com.bridgeit.dataStructurePrograms;
 
 public class Queue<T> {
@@ -10,6 +13,9 @@ public class Queue<T> {
 
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean isEmpty() {
 		if (front == null) {
 			return true;
@@ -19,6 +25,9 @@ public class Queue<T> {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public int size() {
 		Node1 temp = front;
 		int i = 0;
@@ -29,6 +38,11 @@ public class Queue<T> {
 		return i;
 	}
 
+	/**
+	 * Function to add the value in front
+	 * 
+	 * @param data
+	 */
 	public void addFront(T data) {
 		Node1<T> n = new Node1<T>(data);
 		if (front == null) {
@@ -42,6 +56,11 @@ public class Queue<T> {
 		}
 	}
 
+	/**
+	 * Function to add the value in end
+	 * 
+	 * @param data
+	 */
 	public void addEnd(T data) {
 		Node1<T> n = new Node1<T>(data);
 
@@ -55,12 +74,22 @@ public class Queue<T> {
 
 	}
 
+	/**
+	 * Function to remove the front
+	 * 
+	 * @return
+	 */
 	public Node1<T> removeFront() {
 		Node1<T> f = front;
 		front = front.next;
 		return f;
 	}
 
+	/**
+	 * Function to remove the last
+	 * 
+	 * @return
+	 */
 	public Node1<T> removeLast() {
 		Node1<T> f = front;
 		Node1<T> prev = null;
@@ -72,6 +101,9 @@ public class Queue<T> {
 		return f;
 	}
 
+	/**
+	 * Function to display the Queue
+	 */
 	public void display() {
 		Node1<T> temp = front;
 		while (temp != null) {
