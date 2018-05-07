@@ -33,15 +33,16 @@ public class StackLinkedCalender<T> {
 		int i = 1;
 		while (f != null) {
 			Integer value = (Integer) f.data;
-			if (!value.equals(-1))
+			if (!value.equals(-1)) {
 				if (value < 10)
 					System.out.print(f.data + "  ");
 				else
 					System.out.print(f.data + " ");
-			if (i % 7 == 0) {
-				System.out.println();
+				if (i % 7 == 0) {
+					System.out.println();
+				}
 			} else {
-				System.out.print(" ");
+				System.out.print("   ");
 			}
 			f = f.next;
 			i++;

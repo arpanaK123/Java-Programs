@@ -24,6 +24,7 @@ public class HashingFunction {
 	public static void main(String[] args) throws Exception {
 		System.out.println("enter the size");
 		int size = Utility.inputInteger();
+		@SuppressWarnings("unused")
 		HashChain hs = new HashChain(size);
 
 		File file = new File("file");

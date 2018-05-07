@@ -37,9 +37,12 @@ public class OrderedLinkedList<T> {
 	 * @param item
 	 * @return
 	 */
+	// public boolean search(T item) {
+
 	public boolean search(T item) {
 		int count = 0;
 		if (front == null) {
+			// break;
 			return false;
 		} else {
 			Node1<T> f = front;
@@ -191,13 +194,15 @@ public class OrderedLinkedList<T> {
 	/**
 	 * Function to insert the value with position inside linkd list
 	 * 
-	 * @param pos
 	 * @param data
 	 */
-	public void insert(int pos, T data) {
+
+	// public void insert(int pos, T data) {
+	public void insert(T data) {
 		Node1<T> n = new Node1<T>(data);
 		n.data = data;
 		n.next = null;
+		int pos = 0;
 		if (pos == 0) {
 			addFront(data);
 		} else {

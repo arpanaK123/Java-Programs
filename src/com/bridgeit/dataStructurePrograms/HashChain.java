@@ -101,7 +101,7 @@ public class HashChain {
 	 */
 	public static void display() {
 		for (int i = 0; i < table.length; i++) {
-			System.out.println(i + " ");
+			System.out.println(i +":-"+ " ");
 			@SuppressWarnings("rawtypes")
 			Node1 t = table[i];
 			while (t != null) {
@@ -123,10 +123,10 @@ public class HashChain {
 			for (int i = 0; i < table.length; i++) {
 				@SuppressWarnings("rawtypes")
 				Node1 t = null;
-				System.out.println(t.data + " ");
+				System.out.print(t.data + " ");
 				t = table[i];
 				while (t != null) {
-					System.out.println(t.data + " ");
+					System.out.print(t.data + " ");
 					t = t.next;
 				}
 				System.out.println();
