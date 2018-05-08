@@ -8,17 +8,16 @@
 package com.bridgeit.creationalDesignPatterens;
 
 public enum EnumSingleton {
-
-	INSTANCE;
-	int a = 10;
+	LOW, START, INSTANCE;
 
 	public static void doSomething() {
-		int a = 10;
 	}
 
 	public static void main(String[] args) {
 		System.out.println("enum class");
-		System.out.println(INSTANCE.a);
+		System.out.println(START);
+		System.out.println(INSTANCE);
+		System.out.println(LOW);
 	}
 
 }

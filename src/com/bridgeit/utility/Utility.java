@@ -1938,7 +1938,9 @@ public class Utility {
 			l.remove(searchnum);
 		} else {
 			l.add(searchnum);
+			// insert(searchnum);
 		}
+		// sortFunction(searchnum);
 		System.out.println("***********");
 		System.out.println("after searching");
 		l.display();

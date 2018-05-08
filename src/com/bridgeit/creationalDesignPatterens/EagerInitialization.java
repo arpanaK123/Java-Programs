@@ -19,10 +19,9 @@ public class EagerInitialization {
 		return instance;
 	}
 
-	static EagerInitialization instance1 = new EagerInitialization();
-	static EagerInitialization instance2 = new EagerInitialization();
-
 	public static void main(String[] args) {
+		EagerInitialization instance1 = new EagerInitialization();
+		EagerInitialization instance2 = new EagerInitialization();
 
 		System.out.println("bridge lab");
 		System.out.println(instance1);

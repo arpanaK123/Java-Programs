@@ -9,13 +9,6 @@ package com.bridgeit.creationalDesignPatterens;
 
 import java.lang.reflect.Constructor;
 
-/*
- * Purpose:-Implementation of Using Reflection to destroy Singleton Pattern
- * 
- * @Author:-Arpana Kumari
- * Version:1.0
- * @Since:-7 May, 2018
- */
 public class DestroySingleton {
 
 	public static void main(String[] args) {

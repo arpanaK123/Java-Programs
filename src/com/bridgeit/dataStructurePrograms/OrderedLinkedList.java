@@ -63,21 +63,21 @@ public class OrderedLinkedList<T> {
 
 	}
 
-	/**
-	 * Function to append the data in linked list
-	 * 
-	 * @param data
-	 */
-	public void addAgain(T data) {
-		Node1<T> n = new Node1<T>(data);
-		n.data = data;
-		n.next = null;
-		Node1<T> temp = front;
-		while (temp.next != null) {
-			temp = temp.next;
-		}
-		temp.next = n;
-	}
+	// /**
+	// * Function to append the data in linked list
+	// *
+	// * @param data
+	// */
+	// public void addAgain(T data) {
+	// Node1<T> n = new Node1<T>(data);
+	// n.data = data;
+	// n.next = null;
+	// Node1<T> temp = front;
+	// while (temp.next != null) {
+	// temp = temp.next;
+	// }
+	// temp.next = n;
+	// }
 
 	/**
 	 * Function to display the data of the linked list
@@ -113,51 +113,51 @@ public class OrderedLinkedList<T> {
 	 * @param item
 	 * @return
 	 */
-	public int index(T item) {
-		int count = 0, i = 0;
-		if (front == null) {
-			return -1;
-		} else {
-			Node1<T> temp = front;
-			while (temp != null) {
-				i++;
-				if (item == temp.data) {
-					count++;
-					break;
-				}
-				temp = temp.next;
-			}
-		}
-		if (count > 0)
-
-			return i;
-
-		else
-			return -1;
-	}
+	// public int index(T item) {
+	// int count = 0, i = 0;
+	// if (front == null) {
+	// return -1;
+	// } else {
+	// Node1<T> temp = front;
+	// while (temp != null) {
+	// i++;
+	// if (item == temp.data) {
+	// count++;
+	// break;
+	// }
+	// temp = temp.next;
+	// }
+	// }
+	// if (count > 0)
+	//
+	// return i;
+	//
+	// else
+	// return -1;
+	// }
 
 	/**
 	 * pop function of linked list
 	 * 
 	 * @param pos
 	 */
-	public void pop(int pos) {
-		Node1<T> temp = front;
-		int i = 1;
-		while (temp != null && i < pos) {
-			temp = temp.next;
-			i++;
-		}
-		System.out.println(temp.data);
-	}
-
-	public void pop() {
-		Node1<T> temp = front;
-		while (temp.next != null) {
-			temp = temp.next;
-		}
-		System.out.println(temp.data);
-	}
+	// public void pop(int pos) {
+	// Node1<T> temp = front;
+	// int i = 1;
+	// while (temp != null && i < pos) {
+	// temp = temp.next;
+	// i++;
+	// }
+	// System.out.println(temp.data);
+	// }
+	//
+	// public void pop() {
+	// Node1<T> temp = front;
+	// while (temp.next != null) {
+	// temp = temp.next;
+	// }
+	// System.out.println(temp.data);
+	// }
 
 	public boolean isEmpty() {
 		if (front == null)
@@ -272,6 +272,26 @@ public class OrderedLinkedList<T> {
 			pos = pos.next;
 			front = front.next;
 		}
+	}
+
+	public void insertAtPosition(T data) {
+		Node1<T> n = new Node1<T>(data);
+		n.data = data;
+		n.next = null;
+		Node1<T> temp = null;
+
+		if (front == null) {
+			front = null;
+		}
+		while (front != null) {
+			if (((String) n.data).compareTo((String) data) < 0 && ((String) n.data).compareTo((String) data) > 0) {
+				temp = n;
+				temp.next = n.next;
+				n.next = temp.next;
+				break;
+			}
+		}
+
 	}
 
 }

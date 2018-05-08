@@ -9,6 +9,7 @@ package com.bridgeit.creationalDesignPatterens;
 
 public class StaticBlockInitialization {
 	private static StaticBlockInitialization instance;
+	static int c;
 
 	private StaticBlockInitialization() {
 	}
@@ -17,6 +18,7 @@ public class StaticBlockInitialization {
 	static {
 		try {
 			instance = new StaticBlockInitialization();
+			
 		} catch (Exception e) {
 			throw new RuntimeException("Exception occured in creating singleton instance");
 		}

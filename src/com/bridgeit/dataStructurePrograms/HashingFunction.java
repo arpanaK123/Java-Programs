@@ -24,7 +24,6 @@ public class HashingFunction {
 	public static void main(String[] args) throws Exception {
 		System.out.println("enter the size");
 		int size = Utility.inputInteger();
-		@SuppressWarnings("unused")
 		HashChain hs = new HashChain(size);
 
 		File file = new File("file");
@@ -39,15 +38,15 @@ public class HashingFunction {
 		br.close();
 		for (String filestring : filestore.split("\\s", 0)) {
 			int number = Integer.parseInt(filestring);
-			HashChain.insert(number);
+			hs.insert(number);
 		}
 		System.out.println("enter number to be searched");
 		int search = Utility.inputInteger();
 
-		HashChain.search(search);
+		hs.search(search);
 
-		HashChain.display();
-		HashChain.write();
+		hs.display();
+		hs.write();
 	}
 
 }

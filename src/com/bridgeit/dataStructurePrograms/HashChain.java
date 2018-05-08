@@ -12,10 +12,8 @@ import java.io.PrintStream;
 
 public class HashChain {
 
-	@SuppressWarnings("rawtypes")
-	public static Node1[] table;
-	public static int size;
-	@SuppressWarnings("rawtypes")
+	public Node1[] table;
+	public int size;
 	Node1 front;
 
 	/**
@@ -39,15 +37,13 @@ public class HashChain {
 	 * 
 	 * @param value
 	 */
-	@SuppressWarnings("unchecked")
-	public static void insert(int value) {
+	public void insert(int value) {
 		size++;
 		int pos = myhash(value);
-		@SuppressWarnings({ "rawtypes" })
 		Node1 n = new Node1(value);
-		if (table[pos] == null) {
+		if (table[pos] == null)
 			table[pos] = n;
-		} else {
+		else {
 			n.next = table[pos];
 			table[pos] = n;
 		}
@@ -58,12 +54,9 @@ public class HashChain {
 	 * 
 	 * @param val
 	 */
-	@SuppressWarnings("unchecked")
 	public void remove(int val) {
 		int pos = myhash(val);
-		@SuppressWarnings("rawtypes")
 		Node1 temp = table[pos];
-		@SuppressWarnings("rawtypes")
 		Node1 prev = null;
 		Integer t = (Integer) temp.data;
 		if (temp.data.equals(temp)) {
@@ -73,12 +66,13 @@ public class HashChain {
 
 		while (temp != null) {
 			t = (Integer) temp.data;
-			if (t.equals(val)) {
+			if (t.equals(val))
 				break;
-			} else {
+			else
 				prev = temp;
-				temp = temp.next;
-			}
+
+			temp = temp.next;
+
 		}
 		prev.next = temp.next;
 	}
@@ -89,7 +83,7 @@ public class HashChain {
 	 * @param value
 	 * @return
 	 */
-	public static int myhash(int value) {
+	public int myhash(int value) {
 		int hashval = value;
 		hashval = hashval % table.length;
 		return hashval;
@@ -99,13 +93,12 @@ public class HashChain {
 	/**
 	 * Function to display the Hash Table
 	 */
-	public static void display() {
+	public void display() {
 		for (int i = 0; i < table.length; i++) {
-			System.out.println(i +":-"+ " ");
-			@SuppressWarnings("rawtypes")
+			System.out.print(i + ":-" + " ");
 			Node1 t = table[i];
 			while (t != null) {
-				System.out.println(t.data + " ");
+				System.out.print(t.data + " ");
 				t = t.next;
 			}
 			System.out.println();
@@ -115,16 +108,13 @@ public class HashChain {
 	/**
 	 * Function to write the value inside the file
 	 */
-	@SuppressWarnings("null")
-	public static void write() {
+	public void write() throws Exception {
 		try {
 			PrintStream p = new PrintStream(new File("file1.txt"));
 			System.setOut(p);
 			for (int i = 0; i < table.length; i++) {
-				@SuppressWarnings("rawtypes")
-				Node1 t = null;
-				System.out.print(t.data + " ");
-				t = table[i];
+				System.out.print(i + " :");
+				Node1 t = table[i];
 				while (t != null) {
 					System.out.print(t.data + " ");
 					t = t.next;
@@ -142,11 +132,10 @@ public class HashChain {
 	 * 
 	 * @param value
 	 */
-	public static void search(int value) {
+	public void search(int value) {
 		int pos = myhash(value);
 		Integer data = value;
 		int c = 0;
-		@SuppressWarnings("rawtypes")
 		Node1 t = table[pos];
 		while (t != null) {
 			if (t.data.equals(data)) {
@@ -157,6 +146,7 @@ public class HashChain {
 		}
 		if (c > 0) {
 			System.out.println("file found at pos  " + pos + "\n file removed");
+			remove(value);
 		} else {
 			System.out.println("file not found \n file added");
 			insert(value);
