@@ -11,7 +11,6 @@
 package com.bridgeit.dataStructurePrograms;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 import com.bridgeit.utility.Utility;
@@ -20,8 +19,8 @@ public class OrderedList {
 
 	public static void main(String[] args) throws Exception {
 
-		System.out.println("enter number to be searched");
-		String searchnum = Utility.inputString();
+		 System.out.println("enter number to be searched");
+		 String searchnum = Utility.inputString();
 
 		Utility.orderedList(searchnum);
 

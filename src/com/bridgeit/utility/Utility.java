@@ -1214,6 +1214,8 @@ public class Utility {
 		pw.close();
 	}
 
+	// public static
+
 	/**
 	 * function of Bank cash Counter
 	 * 
@@ -1226,49 +1228,57 @@ public class Utility {
 		int testCase = people;
 		MyQueue<Integer> queue = new MyQueue<Integer>(testCase);
 		int choice = 0;
-		for (int i = 0; i < testCase; i++) {
+		for (int i = 0; i < testCase; i++)
 			queue.enQueue(i);
-		}
-		if (testCase > 0) {
-			System.out.println("Bank amount=" + " " + cash);
 
-			while (testCase > 0) {
+		while (testCase > 0) {
+			System.out.println("Bank amount=" + " " + cash);
+			int count = 0;
+			while (count == 0) {
+				// while (testCase > 0) {
 				System.out.println("press 1 for withdraw money");
 				System.out.println("press 2 for Deposit money");
 				System.out.println("enter your choice");
 				choice = Utility.inputInteger();
-				if (choice == 1) {
-					int amount = 0, withdrawAmount = 0;
-					while (withdrawAmount == 0) {
-						System.out.println("enter the amount");
-						amount = Utility.inputInteger();
-						if (amount > cash) {
-							System.out.println("your amount is invalid,plz come next time");
-						} else {
-							cash = cash - amount;
-							System.out.println("after withdraw:  ");
-							System.out.println("Bank amount=" + " " + cash);
-
-							withdrawAmount++;
-						}
-					}
-					queue.deQueue();
-				} else if (choice == 2) {
-					int amount = 0, depositAmount = 0;
-					while (depositAmount == 0) {
-						System.out.println("enter how much amount u want to deposit");
-						amount = Utility.inputInteger();
-						depositAmount++;
-					}
-					cash = cash + amount;
-					System.out.print("after deposit:  ");
-					System.out.println("Bank amount=" + " " + cash);
-					queue.deQueue();
-				}
-				testCase--;
+				if (choice == 1 || choice == 2)
+					count++;
 
 			}
+			if (choice == 1) {
+				int amount = 0, withdrawAmount = 0;
+				while (withdrawAmount == 0) {
+					System.out.println("enter the amount");
+					amount = Utility.inputInteger();
+
+					if (amount > cash)
+						System.out.println("your amount is invalid,plz come next");
+
+					else
+						cash = cash - amount;
+					// System.out.println("after withdraw: ");
+					// System.out.println("Bank amount=" + " " + cash);
+
+					withdrawAmount++;
+				}
+				queue.deQueue();
+
+				// queue.deQueue();
+			} else if (choice == 2) {
+				int amount = 0, depositAmount = 0;
+				while (depositAmount == 0) {
+					System.out.println("enter how much amount u want to deposit");
+					amount = Utility.inputInteger();
+					depositAmount++;
+				}
+				cash = cash + amount;
+				// System.out.print("after deposit: ");
+				// System.out.println("Bank amount=" + " " + cash);
+				queue.deQueue();
+			}
+			testCase--;
+			System.out.println("total people left " + testCase);
 		}
+
 		return cash;
 
 	}
@@ -1709,12 +1719,13 @@ public class Utility {
 	 *            find factorial
 	 * @return: factorial number
 	 */
-	public static int findFactorial(int number) {
-		int fact = 1;
-		while (number != 0) {
-			fact = fact * number;
-			number--;
+	public static double findFactorial(double d) {
+		double fact = 1;
+		while (d != 0) {
+			fact = fact * d;
+			d--;
 		}
+		System.out.println(fact);
 		return fact;
 	}
 
@@ -1725,10 +1736,10 @@ public class Utility {
 	 *            number of nodes
 	 * @return:total number of tree
 	 */
-	public static int binarySearchTree(int nodes) {
-		int numerator = (findFactorial(2 * nodes));
-		int denumerator = (findFactorial(nodes + 1)) * findFactorial(nodes);
-		int tree = numerator / denumerator;
+	public static double binarySearchTree(double nodes) {
+		double numerator = (findFactorial(2 * nodes));
+		double denumerator = (findFactorial(nodes + 1)) * findFactorial(nodes);
+		double tree = numerator / denumerator;
 		return tree;
 	}
 
@@ -1942,6 +1953,39 @@ public class Utility {
 		}
 		// sortFunction(searchnum);
 		System.out.println("***********");
+		System.out.println("after searching");
+		l.display();
+		l.write();
+	}
+	
+	
+	public static void unOrderedList(String number) throws IOException
+	{
+		OrderedLinkedList<String> l = new OrderedLinkedList<String>();
+		File file = new File("ordered");
+		BufferedReader br = new BufferedReader(new FileReader("unordered"));
+
+		String str = "";
+		String stint;
+		while ((stint = br.readLine()) != null) {
+			str = str + stint + " ";
+		}
+		br.close();
+
+		for (String filenum : str.split("\\s", 0)) {
+			l.add(filenum);
+		}
+		System.out.println("Before search");
+		l.display();
+		boolean result = l.search(number);
+		if (result) {
+			l.remove(number);
+		} else {
+			l.add(number);
+			// insert(searchnum);
+		}
+		// sortFunction(searchnum);
+		//System.out.println("***********");
 		System.out.println("after searching");
 		l.display();
 		l.write();

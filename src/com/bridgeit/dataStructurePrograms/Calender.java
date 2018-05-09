@@ -22,10 +22,7 @@ public class Calender {
 		}
 		System.out.println("enter year");
 		int year = Utility.inputInteger();
-		if (year < 1800) {
-			System.out.println("invalid year, enter year 1800 and beyond");
-			System.exit(0);
-		}
+		
 		Utility.calender1(month, year);
 
 	}

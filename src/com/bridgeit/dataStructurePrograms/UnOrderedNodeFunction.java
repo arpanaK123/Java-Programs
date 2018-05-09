@@ -3,8 +3,14 @@
  */
 package com.bridgeit.dataStructurePrograms;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
 import com.bridgeit.utility.Utility;
 
@@ -105,8 +111,7 @@ public class UnOrderedNodeFunction<T> {
 		} else {
 			UnOrderedNodeFunction.removeData(position);
 		}
-		File file = new File(
-				"//home//bridgeit//Documents//workspace-sts-3.9.3.RELEASE//Java-Program//src//com//bridgeit//unorderedfiles//unorderedEmpty.txt");
+		File file = new File("unordered");
 		Node<?> node = Head;
 		while (node.nextNode != null) {
 			Utility.printWriter(file, node.data);
@@ -114,6 +119,21 @@ public class UnOrderedNodeFunction<T> {
 		}
 		Utility.printWriter(file, node.data);
 
+		
+	}
+	
+	public void write() {
+		Node<?> temp = Head;
+		try {
+			PrintStream ps = new PrintStream(new File("ordered"));
+			System.setOut(ps);
+			while (temp != null) {
+				System.out.println(temp.data);
+				temp = temp.next;
+			}
+		} catch (Exception e) {
+			System.out.println("file not found");
+		}
 	}
 
 }

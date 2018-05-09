@@ -14,12 +14,12 @@ public class BinarySearchTree {
 	public static void main(String[] args) {
 
 		System.out.println("enter the number");
-		int testcase = Utility.inputInteger();
+		double testcase = Utility.inputInteger();
 		while (testcase > 0) {
 			System.out.println("enter the nodes");
 
 			int nodes = Utility.inputInteger();
-			int tree = Utility.binarySearchTree(nodes);
+			double tree = Utility.binarySearchTree(nodes);
 			System.out.println("total tree= " + tree);
 			testcase--;
 		}

@@ -7,8 +7,12 @@
  */
 package com.bridgeit.dataStructurePrograms;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 
 public class OrderedLinkedList<T> {
 	Node1<T> front;
@@ -85,9 +89,10 @@ public class OrderedLinkedList<T> {
 	public void display() {
 		Node1<T> temp = front;
 		while (temp != null) {
-			System.out.println(temp.data);
+			System.out.print(temp.data+" ");
 			temp = temp.next;
 		}
+		System.out.println();
 	}
 
 	/**
@@ -96,7 +101,7 @@ public class OrderedLinkedList<T> {
 	public void write() {
 		Node1<T> temp = front;
 		try {
-			PrintStream ps = new PrintStream(new File("ordered"));
+			PrintStream ps = new PrintStream(new File("unordered"));
 			System.setOut(ps);
 			while (temp != null) {
 				System.out.println(temp.data);
@@ -107,57 +112,7 @@ public class OrderedLinkedList<T> {
 		}
 	}
 
-	/**
-	 * Function to find the index of data
-	 * 
-	 * @param item
-	 * @return
-	 */
-	// public int index(T item) {
-	// int count = 0, i = 0;
-	// if (front == null) {
-	// return -1;
-	// } else {
-	// Node1<T> temp = front;
-	// while (temp != null) {
-	// i++;
-	// if (item == temp.data) {
-	// count++;
-	// break;
-	// }
-	// temp = temp.next;
-	// }
-	// }
-	// if (count > 0)
-	//
-	// return i;
-	//
-	// else
-	// return -1;
-	// }
-
-	/**
-	 * pop function of linked list
-	 * 
-	 * @param pos
-	 */
-	// public void pop(int pos) {
-	// Node1<T> temp = front;
-	// int i = 1;
-	// while (temp != null && i < pos) {
-	// temp = temp.next;
-	// i++;
-	// }
-	// System.out.println(temp.data);
-	// }
-	//
-	// public void pop() {
-	// Node1<T> temp = front;
-	// while (temp.next != null) {
-	// temp = temp.next;
-	// }
-	// System.out.println(temp.data);
-	// }
+	
 
 	public boolean isEmpty() {
 		if (front == null)
@@ -292,6 +247,126 @@ public class OrderedLinkedList<T> {
 			}
 		}
 
+	}
+
+	public class Node<T> {
+		Node next;
+		T data;
+
+	}
+
+	Node front1;
+
+	public <T> void addData(T data) {
+		Node n = new Node();
+		n.data = data;
+		n.next = null;
+		if (front1 == null) {
+			front1 = n;
+		} else {
+			Node temp = front1;
+			while (temp.next == null) {
+				temp = temp.next;
+			}
+			temp.next = n;
+		}
+	}
+
+	public <T> void showFunction() {
+		Node n = front1;
+		while (n != null) {
+			System.out.println(n.data);
+			n = n.next;
+		}
+	}
+
+	public <T> int searchData(T item) {
+		Node temp = front1;
+		int count = 0;
+		while (temp != null) {
+			count++;
+			if ((temp.data).equals(item)) {
+				return count;
+			}
+
+			temp = temp.next;
+		}
+
+		return 0;
+	}
+
+	public <T> void removeData(T data, int index) {
+		Node temp = front1;
+		Node temp1 = null;
+		if (index == 1) {
+			front1 = front1.next;
+
+		} else {
+			for (int i = 0; i < index - 2; i++) {
+				temp = temp.next;
+			}
+			temp1 = temp.next;
+			temp.next = temp1.next;
+			System.out.println(temp1.data + " remove data");
+		}
+
+	}
+
+	public <T extends Comparable<T>> void sortData(T array) {
+		Node n = new Node();
+		n.data = array;
+		n.next = null;
+		Node insert = null;
+		if (front1 == null) {
+			front1 = null;
+		} else {
+			Node temp = front1;
+			while (temp.next != null) {
+				if (((Comparable<T>) temp.data).compareTo(array) < 0
+						&& (((Comparable<T>) temp.next.data).compareTo(array) > 0)) {
+					insert = n;
+					insert.next = temp.next;
+					temp.next = insert;
+					break;
+				}
+				temp = temp.next;
+
+			}
+			temp.next = n;
+		}
+	}
+
+	public <T extends Comparable<T>> T[] sortData(T[] array) {
+		T temp;
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array.length; j++) {
+				if (array[i].compareTo(array[j]) < 0) {
+					temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+				}
+			}
+		}
+		return array;
+	}
+
+	public void displayData() throws IOException {
+		FileWriter fw = new FileWriter("ordered");
+		BufferedWriter bw = new BufferedWriter(fw);
+		PrintWriter pw = new PrintWriter(bw);
+		Node temp = front1;
+		if (front1 == null) {
+			System.out.println("list is empty");
+			return;
+		} else if (temp.next == null) {
+			pw.print(temp.data);
+		} else {
+			while (temp != null) {
+				pw.print(temp.data + " ");
+				temp = temp.next;
+			}
+		}
+		pw.close();
 	}
 
 }

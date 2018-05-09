@@ -18,7 +18,7 @@ public class BankCashCounter {
 		System.out.println("enter total number of people");
 		int people = Utility.inputInteger();
 		int cash = Utility.bankCashCounter(people);
-		System.out.println("final balance is=" + cash);
+		System.out.println("final Bank balance is=" + cash);
 	}
 
 }

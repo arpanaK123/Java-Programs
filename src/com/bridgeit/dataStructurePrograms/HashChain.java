@@ -9,12 +9,14 @@ package com.bridgeit.dataStructurePrograms;
 
 import java.io.File;
 import java.io.PrintStream;
+import java.util.Iterator;
 
 public class HashChain {
 
 	public Node1[] table;
 	public int size;
 	Node1 front;
+	private Object[] tabel;
 
 	/**
 	 * @param tablesize
@@ -39,6 +41,7 @@ public class HashChain {
 	 */
 	public void insert(int value) {
 		size++;
+		int count = 0;
 		int pos = myhash(value);
 		Node1 n = new Node1(value);
 		if (table[pos] == null)
@@ -94,15 +97,28 @@ public class HashChain {
 	 * Function to display the Hash Table
 	 */
 	public void display() {
+		int count = 0;
 		for (int i = 0; i < table.length; i++) {
-			System.out.print(i + ":-" + " ");
+
+			//System.out.print(i + ":-");
+
 			Node1 t = table[i];
-			while (t != null) {
-				System.out.print(t.data + " ");
-				t = t.next;
+			count = 0;
+			if (t != null) {
+				System.out.print(i + ": ");
+				count++;
 			}
-			System.out.println();
+
+			Node1 tt = table[i];
+			while (tt != null) {
+				System.out.print(tt.data + " ");
+				tt = tt.next;
+			}
+
+			if (count > 0)
+				System.out.println();
 		}
+
 	}
 
 	/**

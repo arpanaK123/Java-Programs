@@ -28,14 +28,14 @@ public class HashingFunction {
 
 		File file = new File("file");
 
-		BufferedReader br = new BufferedReader(new FileReader(file));
+		BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
 		String filestore = "";
 		String readsfile;
-		while ((readsfile = br.readLine()) != null) {
+		while ((readsfile = bufferedreader.readLine()) != null) {
 			filestore = filestore + readsfile + " ";
 
 		}
-		br.close();
+		bufferedreader.close();
 		for (String filestring : filestore.split("\\s", 0)) {
 			int number = Integer.parseInt(filestring);
 			hs.insert(number);
