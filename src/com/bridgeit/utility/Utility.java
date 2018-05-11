@@ -9,16 +9,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.json.simple.JSONObject;
 
 import com.bridgeit.dataStructurePrograms.LinkedQueue;
 import com.bridgeit.dataStructurePrograms.LinkedStack;
 import com.bridgeit.dataStructurePrograms.MyQueue;
 import com.bridgeit.dataStructurePrograms.Node1;
 import com.bridgeit.dataStructurePrograms.OrderedLinkedList;
+import com.bridgeit.dataStructurePrograms.UnOrderedLinkedList;
 import com.bridgeit.dataStructurePrograms.Queue;
 
 @SuppressWarnings("unused")
@@ -1927,41 +1934,40 @@ public class Utility {
 	 * @param searchnum
 	 * @throws Exception
 	 */
-	public static void orderedList(String searchnum) throws Exception {
-		OrderedLinkedList<String> l = new OrderedLinkedList<String>();
-		File file = new File("ordered");
-		BufferedReader br = new BufferedReader(new FileReader(file));
+	// public static void orderedList(String searchnum) throws Exception {
+	// OrderedLinkedList<String> l = new OrderedLinkedList<String>();
+	// File file = new File("ordered");
+	// BufferedReader br = new BufferedReader(new FileReader(file));
+	//
+	// String str = "";
+	// String stint;
+	// while ((stint = br.readLine()) != null) {
+	// str = str + stint + " ";
+	// }
+	// br.close();
+	//
+	// for (String filenum : str.split("\\s", 0)) {
+	// l.add(filenum);
+	// }
+	// System.out.println("Before search");
+	// l.display();
+	// boolean result = l.search(searchnum);
+	// if (result) {
+	// l.remove(searchnum);
+	// } else {
+	// l.add(searchnum);
+	// // insert(searchnum);
+	// }
+	// // sortFunction(searchnum);
+	// System.out.println("***********");
+	// System.out.println("after searching");
+	// l.display();
+	// l.write();
+	// }
+	//
 
-		String str = "";
-		String stint;
-		while ((stint = br.readLine()) != null) {
-			str = str + stint + " ";
-		}
-		br.close();
-
-		for (String filenum : str.split("\\s", 0)) {
-			l.add(filenum);
-		}
-		System.out.println("Before search");
-		l.display();
-		boolean result = l.search(searchnum);
-		if (result) {
-			l.remove(searchnum);
-		} else {
-			l.add(searchnum);
-			// insert(searchnum);
-		}
-		// sortFunction(searchnum);
-		System.out.println("***********");
-		System.out.println("after searching");
-		l.display();
-		l.write();
-	}
-	
-	
-	public static void unOrderedList(String number) throws IOException
-	{
-		OrderedLinkedList<String> l = new OrderedLinkedList<String>();
+	public static void unOrderedList(String number) throws IOException {
+		UnOrderedLinkedList<String> l = new UnOrderedLinkedList<String>();
 		File file = new File("ordered");
 		BufferedReader br = new BufferedReader(new FileReader("unordered"));
 
@@ -1985,9 +1991,131 @@ public class Utility {
 			// insert(searchnum);
 		}
 		// sortFunction(searchnum);
-		//System.out.println("***********");
+		// System.out.println("***********");
 		System.out.println("after searching");
 		l.display();
 		l.write();
 	}
+
+	// JSON Data Management
+
+	/**
+	 * Function of Regular Expression function to replace name
+	 * 
+	 * @param sentence
+	 * @return
+	 */
+	public static String replaceFullName(String sentence) {
+		System.out.println("enter new name");
+		String newName = Utility.inputString();
+		System.out.println("enter full name");
+		String fullname = Utility.inputString();
+		String replaceName = sentence.replaceAll("<<name>>", newName);
+
+		String replaceFullName = replaceName.replaceAll("<<full name>>", fullname);
+
+		Utility.replaceWithPattern(sentence, replaceFullName);
+
+		return replaceFullName;
+	}
+
+	/**
+	 * Function to replace mobile number
+	 * 
+	 * @param sentence
+	 * @return
+	 */
+	public static String mobileNumber(String sentence) {
+		System.out.println("enter your mobile number");
+		String number = Utility.inputString();
+		String replaceNumber = sentence.replaceAll("xxxxxxxxxx", number);
+
+		Utility.replaceWithPattern(sentence, replaceNumber);
+
+		return replaceNumber;
+	}
+
+	/**
+	 * Function to change date to date
+	 * 
+	 * @param sentence
+	 * @return
+	 */
+	public static String dateChange(String sentence) {
+		System.out.println("enter the new date");
+		String date = Utility.inputString();
+		String rerplaceDate = sentence.replaceAll("10/05/2018", date);
+		Utility.replaceWithPattern(sentence, rerplaceDate);
+
+		return rerplaceDate;
+
+	}
+
+	/**
+	 * Function of replace with pattern using regex
+	 * 
+	 * @param str
+	 * @param replace
+	 * @return
+	 */
+	public static String replaceWithPattern(String str, String replace) {
+
+		Pattern ptn = Pattern.compile("\\s+");
+		Matcher mtch = ptn.matcher(str);
+		return mtch.replaceAll(replace);
+	}
+
+	/**
+	 * Function of Deck Of Cards
+	 * 
+	 * @param suits
+	 * @param ranks
+	 * @return
+	 */
+	public static String[] deck(String[] suits, String[] ranks) {
+		int n = suits.length * ranks.length;
+
+		String[] deck = new String[n];
+
+		for (int i = 0; i < ranks.length; i++) {
+			for (int j = 0; j < suits.length; j++) {
+				deck[suits.length * i + j] = ranks[i] + " " + "of" + " " + suits[j];
+			}
+		}
+
+		for (int i = 0; i < deck.length; i++) {
+			int random = i + (int) Math.random() * (deck.length - 1);
+			String temp = deck[random];
+			deck[random] = deck[i];
+			deck[i] = temp;
+		}
+		return deck;
+	}
+
+	/**
+	 * function of distributeed card
+	 * 
+	 * @param deck
+	 */
+	public static void distributeCard(String[] deck) {
+		int indexOfdeck = 0;
+		String[][] cardDistribute = new String[4][9];
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 9; j++) {
+				cardDistribute[i][j] = deck[indexOfdeck];
+				indexOfdeck++;
+			}
+		}
+
+		for (int i = 0; i < 4; i++) {
+			System.out.print("\n Player" + i + 1 + " : ");
+
+			for (int j = 0; j < 9; j++) {
+				System.out.print(cardDistribute[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+	}
+
 }

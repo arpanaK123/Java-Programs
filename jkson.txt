@@ -1,0 +1,7 @@
+{
+"Details of Rice Pulse Wheat":[
+"Rice: 15kg Rs50 /kg",
+"Pulse: 10kg Rs45 /kg",
+"Wheat: 15kg Rs 55 /kg"
+]
+}

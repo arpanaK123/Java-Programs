@@ -1,0 +1,17 @@
+[
+	{
+		"Nmae": "Rice",
+		"Weight": "10kg",
+		"Price": "Rs50"
+	},
+	{
+		"Name": "Pulses",
+		"Weight": "15kg",
+		"Price": "Rs45"
+	},
+	{
+		"Name": "Wheats",
+		"Weight": "20",
+		"Price": "Rs55"
+	}
+]

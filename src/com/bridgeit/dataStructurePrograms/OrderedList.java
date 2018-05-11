@@ -19,10 +19,54 @@ public class OrderedList {
 
 	public static void main(String[] args) throws Exception {
 
-		 System.out.println("enter number to be searched");
-		 String searchnum = Utility.inputString();
 
-		Utility.orderedList(searchnum);
+		OrderedLinkedList<Integer> list = new OrderedLinkedList<Integer>();
+
+		FileReader read = new FileReader("ordered");
+
+		BufferedReader br = new BufferedReader(read);
+
+		String file = br.readLine();
+
+		System.out.println("File contains :");
+		System.out.println(file);
+		br.close();
+
+		String[] stringArray = file.split("\\s",0);
+
+		Object[] array = list.SortInt(stringArray);
+
+		int i, j;
+
+		//System.out.println("The sorted array is:");
+		for (i = 0; i < stringArray.length; i++) {
+
+			//System.out.println(array[i]);
+
+		}
+
+		for (j = 0; j < i; j++) {
+
+			list.add(array[j]);
+		}
+
+
+		System.out.println("Enter the  value to be search:");
+		String value = Utility.inputString();
+
+		int index = list.search(value);
+
+		if (index == 0) {
+			list.sortedAdd(value);
+		} else {
+			list.remove(value, index);
+		}
+
+		System.out.println("After searching:");
+
+		list.show();
+
+		list.printOrdered();
 
 	}
 
