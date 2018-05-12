@@ -39,7 +39,8 @@ public class Person {
 	}
 
 	public String toString() {
-		return ("firstname: " + getFirstName() + " " + "lastName: " + getLastName() + " " + "mobile number "
-				+ getMobileNumber() + " " + "Address " + getAddress());
+		return "\n\t\t first Name: " + getFirstName() + " " + "lastName: " + getLastName() + " " + "mobile number "
+				+ getMobileNumber() + " " + "Address " + getAddress();
 	}
+
 }

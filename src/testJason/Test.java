@@ -1,29 +1,38 @@
 package testJason;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 public class Test {
 
-	private String name;
-	private int id;
+	 @SuppressWarnings({ "unchecked", "deprecation" })
+	public static void main(String[] args) {
 
-	public Test(String name, int id) {
-		this.name = name;
-		this.id = id;
-	}
+	        JSONObject obj = new JSONObject();
+	        obj.put("name", "mkyong.com");
+	        obj.put("age", new Integer(100));
 
-	public String getName() {
-		return name;
-	}
+	        JSONArray list = new JSONArray();
+	        list.add("msg 1");
+	        list.add("msg 2");
+	        list.add("msg 3");
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	        obj.put("messages", list);
 
-	public int getId() {
-		return id;
-	}
+	        try (FileWriter file = new FileWriter("test.json")) {
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	            file.write(obj.toJSONString());
+	            file.flush();
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+
+	        System.out.print(obj);
+
+	    }
 
 }

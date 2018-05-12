@@ -2108,10 +2108,11 @@ public class Utility {
 		}
 
 		for (int i = 0; i < 4; i++) {
-			System.out.print("\n Player" + i + 1 + " : ");
+			System.out.println("\n Player" + i + 1 + " : ");
+			System.out.println("~~~~~~~~~~~~");
 
 			for (int j = 0; j < 9; j++) {
-				System.out.print(cardDistribute[i][j] + " ");
+				System.out.println(cardDistribute[i][j] + " ");
 			}
 			System.out.println();
 		}
