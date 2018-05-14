@@ -1,6 +1,8 @@
 package com.bridgeit.AddressBook;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,12 +11,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 import com.bridgeit.utility.Utility;
 
 public class AddressBookImplement implements AddressBook {
 	public static List<Person> list = new ArrayList<Person>();
 	ObjectMapper objectMapper = new ObjectMapper();
+
 	public List<Person> add() {
 		list.add(addUser());
 		for (Person p : list) {
@@ -42,7 +46,7 @@ public class AddressBookImplement implements AddressBook {
 					editAddress(P, 1);
 					break;
 				case 2:
-					editPhoneNumber(P, 2);
+					editAddress(P, 2);
 					break;
 				default:
 					System.out.println("choose the correct option");
@@ -95,70 +99,115 @@ public class AddressBookImplement implements AddressBook {
 
 	public static Person addUser() {
 		Person person = new Person();
-		Address address = new Address();
-		System.out.println("\tenter the First name");
+		System.out.println("enter the First name");
 		String firstName = Utility.inputString();
 		person.setFirstName(firstName);
-		System.out.println("\tEnter last name");
+		System.out.println("Enter last name");
 		String lastName = Utility.inputString();
 		person.setLastName(lastName);
-		System.out.println("\tEnter Address");
-		String adress = Utility.inputString();
-		person.setAddress(address);
-		System.out.println("\tEnter mobile number");
+
+		System.out.println("Enter mobile number");
 		String mob = Utility.inputString();
-		person.setMobileNumber(mob);
-		System.out.println("\tEnter city");
+		person.setPhonenumber(mob);
+		 System.out.println("\tEnter Address");
+		 String adres=Utility.inputString();
+		// address.setAddress(address);
+		System.out.println("Enter city");
 		String city = Utility.inputString();
-		address.setCity(city);
-		System.out.println("\tEnter State");
+		person.setCity(city);
+		System.out.println("Enter State");
 		String state = Utility.inputString();
-		address.setState(state);
-		System.out.println("\tEnter ZIP");
+		person.setState(state);
+		System.out.println("Enter ZIP");
 		String zip = Utility.inputString();
-		address.setZip(zip);
-		System.out.println("\tEnter Phone Number");
-		String mobnum = Utility.inputString();
-		address.setPhoneNumber(mobnum);
+		person.setZip(zip);
+
 		return person;
 	}
 
 	public static void editAddress(Person p, int i) {
-		Address adres = new Address();
+		Person person1 = new Person();
 
-		System.out.println("\tEnter new State");
-		String state = Utility.inputString();
-		adres.setState(state);
-		System.out.println("\tEnter new City");
-		String city = Utility.inputString();
-		adres.setCity(state);
-		System.out.println("\tEnter new zip code");
-		String zip = Utility.inputString();
-		adres.setZip(zip);
+		switch (i) {
+		
+		case 1:
 
-	}
+			System.out.println("\tEnter new State");
+			String state = Utility.inputString();
+			person1.setState(state);
+			System.out.println("\tEnter new City");
+			String city = Utility.inputString();
+			person1.setCity(city);
 
-	public static void editPhoneNumber(Person p, int i) {
-		Address adres = new Address();
-		System.out.println("\tEnter new phone number");
-		String mob = Utility.inputString();
-		adres.setPhoneNumber(mob); 
-	}
-	
-	
-	public void save(String file)
-	{
-		try
-		{
-			objectMapper.writeValue(new File("address/"+file+".json"), list);
-			System.out.println("\n\tData saved");
+			System.out.println("\tEnter new zip code");
+			String zip = Utility.inputString();
+			person1.setZip(zip);
 			
+
+
+			System.out.println("your address book change with your new data");
+			break;
+
+		case 2:
 			
+			System.out.println("\tEnter new phone number");
+			String mob = Utility.inputString();
+			person1.setPhonenumber(mob);
+			System.out.println("your adddress book change with your new phone number");
+			break;
+
+		default:
+			System.out.println("enter correct option");
 		}
-		catch(IOException e)
-		{
+
+	}
+
+	public void save(String file) {
+		try {
+			objectMapper.writeValue(new File("address/" + file + ".json"), list);
+			System.out.println("\n\tData saved");
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	public void read(String addressFile) {
+		ObjectMapper objectmapper = new ObjectMapper();
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader("address/" + addressFile + ".json"));
+		String jsonRead;
+			if ((jsonRead = bufferedReader.readLine()) != null) {
+TypeReference<ArrayList<Person>> typereference=new TypeReference<ArrayList<Person>>() {};
+list=objectmapper.readValue(jsonRead,typereference);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void close()
+
+	{
+		return;
+	}
+
+	public void saveAs() {
+		Person person = new Person();
+
+		System.out.println("enter your First name");
+		String name = Utility.inputString();
+		person.setFirstName(name);
+		System.out.println("enter your last name");
+		String lastname = Utility.inputString();
+		person.setLastName(lastname);
+		System.out.println("enter your mobile number");
+		String number = Utility.inputString();
+		person.setPhonenumber(number);
+		System.out.println("your new data added to your address book");
+
 	}
 }

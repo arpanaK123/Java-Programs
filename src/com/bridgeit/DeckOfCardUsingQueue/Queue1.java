@@ -1,9 +1,5 @@
 package com.bridgeit.DeckOfCardUsingQueue;
 
-import java.lang.reflect.Array;
-
-import com.bridgeit.dataStructurePrograms.Node;
-
 public class Queue1 {
 	int count = 0;
 	Node front = null, temp;

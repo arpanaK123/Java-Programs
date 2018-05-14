@@ -1,10 +1,20 @@
 package com.bridgeit.AddressBook;
 
 public class Person {
-	String firstName;
-	String lastName;
-	Address address;
-	String mobileNumber;
+	private String firstName;
+	private String lastName;
+	private String city;
+	private String state;
+	private String zip;
+	private String phonenumber;
+
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -22,25 +32,33 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public Address getAddress() {
-		return address;
+	public String getCity() {
+		return city;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public String getMobileNumber() {
-		return mobileNumber;
+	public String getState() {
+		return state;
 	}
 
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 	public String toString() {
-		return "\n\t\t first Name: " + getFirstName() + " " + "lastName: " + getLastName() + " " + "mobile number "
-				+ getMobileNumber() + " " + "Address " + getAddress();
+		return "\nfirst  Name: " + firstName + "\n Last name: " + lastName + "\n City: " + city + "\nState: " + state
+				+ "\nZip: " + zip + "\n Mob. Num.: " + phonenumber;
 	}
 
 }
