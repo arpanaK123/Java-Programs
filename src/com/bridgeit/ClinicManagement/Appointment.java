@@ -1,11 +1,14 @@
 package com.bridgeit.ClinicManagement;
 
-public class Appoitment {
-	String doctorName;
+public class Appointment {
+	private String doctorName;
 	Patient patient;
-	String date;
-	String id;
-	String appoitmnetTime;
+	private String date;
+	private String id;
+	private int appointmnetTime;
+
+	public Appointment() {
+	}
 
 	public String getDoctorName() {
 		return doctorName;
@@ -39,19 +42,20 @@ public class Appoitment {
 		this.id = id;
 	}
 
-	public String getAppoitmnetTime() {
-		return appoitmnetTime;
+	public int getAppointmnetTime() {
+		return appointmnetTime;
 	}
 
-	public void setAppoitmnetTime(String appoitmnetTime) {
-		this.appoitmnetTime = appoitmnetTime;
+	public void setAppointmnetTime(int appointmnetTime) {
+		this.appointmnetTime = appointmnetTime;
 	}
 
 	public String toString()
 
 	{
 		return "\n Doctor Name: " + doctorName + "\n Patient: " + patient + "\n Date: " + date + "\nID: " + id
-				+ "\nappoitmnetTime: " + appoitmnetTime;
+				+ "\nappointmnetTime: " + appointmnetTime;
 
 	}
+
 }

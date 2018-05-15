@@ -1,13 +1,38 @@
 package com.bridgeit.ClinicManagement;
 
 public class Doctors {
-	private String name;
-	private String id;
-	private String specialization;
-	private String availability;
-	
+	String name;
+	String id;
+	String specialization;
+	String availability;
+	String date;
+
+	int numOfAppointment;
+
+	public int getNumberofPatient() {
+		return numberofPatient;
+	}
+
+	public void setNumberofPatient(int numberofPatient) {
+		this.numberofPatient = numberofPatient;
+	}
+
+	int numberofPatient;
+
+	public int getNumOfAppointment() {
+		return numOfAppointment;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public void setName(String name) {
@@ -39,7 +64,13 @@ public class Doctors {
 	}
 
 	public String toString() {
-		return "\n Name: " + getName() + "\n ID: " + getId() + "\n Specialization: " + getSpecialization()
-				+ "\n Availability: " + getAvailability();
+		return "\nDoctor Name: " + getName() + "\nDoctor ID: " + getId() + "\nDoctor Specialization: "
+				+ getSpecialization() + "\nDoctor Availability: " + getAvailability() + "\n Date: " + date
+				+ "\nAppointment: " + numOfAppointment;
+	}
+
+	public void setNumOfAppointment(int i) {
+		// TODO Auto-generated method stub
+
 	}
 }

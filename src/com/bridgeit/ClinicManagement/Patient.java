@@ -1,10 +1,14 @@
 package com.bridgeit.ClinicManagement;
 
 public class Patient {
-	private String name;
-	private String id;
-	private String mobileNumber;
-	private int age;
+	String name;
+	String id;
+	String mobileNumber;
+	int age;
+
+	public Patient() {
+
+	}
 
 	public Patient(String name, String id, String mobileNumber, int age) {
 		this.name = name;
@@ -49,8 +53,8 @@ public class Patient {
 	public String toString()
 
 	{
-		return "\n Name: " + getName() + "\n ID: " + getId() + "\n Mobile Number: " + getMobileNumber() + "\n Age: "
-				+ getAge();
+		return "\n Patient Name: " + getName() + "\nPatient ID: " + getId() + "\nPatient Mobile Number: "
+				+ getMobileNumber() + "\nPatient Age: " + getAge();
 	}
 
 }
