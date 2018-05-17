@@ -18,8 +18,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.json.simple.JSONObject;
-
 import com.bridgeit.dataStructurePrograms.LinkedQueue;
 import com.bridgeit.dataStructurePrograms.LinkedStack;
 import com.bridgeit.dataStructurePrograms.MyQueue;
@@ -107,6 +105,17 @@ public class Utility {
 	{
 		boolean input = scan.nextBoolean();
 		return input;
+	}
+
+	/**
+	 * take a long type input from a scanner class
+	 * 
+	 * @return long input
+	 */
+	public static long inputLong() {
+		long input = scan.nextLong();
+		return input;
+
 	}
 
 	/**
@@ -2009,9 +2018,18 @@ public class Utility {
 		System.out.println("enter new name");
 		String newName = Utility.inputString();
 		System.out.println("enter full name");
-		String fullname = Utility.inputString();
-		String replaceName = sentence.replaceAll("<<name>>", newName);
 
+		//String fullname = Utility.inputString1();
+//	 while (fullname == null) {
+//			fullname =  Utility.inputString();
+//		}
+		Scanner sc=new Scanner(System.in);
+		String fullname = sc.nextLine();
+//	
+
+		
+		//System.out.println("fullname"+fullname);
+		String replaceName = sentence.replaceAll("<<name>>", newName);
 		String replaceFullName = replaceName.replaceAll("<<full name>>", fullname);
 
 		Utility.replaceWithPattern(sentence, replaceFullName);
