@@ -2,9 +2,18 @@ package com.bridgeit.ClinicManagementPozo;
 
 public class Doctor {
 	private String doctorName;;
-	private String doctorId;
+	private int doctorId;
 	private String doctorSpecialization;
 	private String doctorAvailability;
+	private int numberOfPatient;
+
+	public int getNumberOfPatient() {
+		return numberOfPatient;
+	}
+
+	public void setNumberOfPatient(int numberOfPatient) {
+		this.numberOfPatient = numberOfPatient;
+	}
 
 	public String getDoctorName() {
 		return doctorName;
@@ -14,11 +23,11 @@ public class Doctor {
 		this.doctorName = doctorName;
 	}
 
-	public String getDoctorId() {
+	public int getDoctorId() {
 		return doctorId;
 	}
 
-	public void setDoctorId(String doctorId) {
+	public void setDoctorId(int doctorId) {
 		this.doctorId = doctorId;
 	}
 

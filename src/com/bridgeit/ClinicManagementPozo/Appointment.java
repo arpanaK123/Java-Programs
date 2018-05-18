@@ -1,25 +1,16 @@
 package com.bridgeit.ClinicManagementPozo;
 
 public class Appointment {
-	private String appointmentTime;
-	private String appointmentDate;
-	private Doctor doctor;
-	private Patient patient;
+	private String date;
+	Doctor doctor;
+	Patient patient;
 
-	public String getAppintmentTime() {
-		return appointmentTime;
+	public String getDate() {
+		return date;
 	}
 
-	public void setAppintmentTime(String appintmentTime) {
-		this.appointmentTime = appintmentTime;
-	}
-
-	public String getAppointmentDate() {
-		return appointmentDate;
-	}
-
-	public void setAppointmentDate(String appointmentDate) {
-		this.appointmentDate = appointmentDate;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public Doctor getDoctor() {
@@ -38,10 +29,7 @@ public class Appointment {
 		this.patient = patient;
 	}
 
-	public String toString()
-
-	{
-		return "\n\tDoctor Name: " + doctor + "\n\tPatient Name: " + patient + "\n\tAppointment \n\tTime    :"
-				+ appointmentTime + "\n\tAppointment \n\tDate   :" + appointmentDate;
+	public String toString() {
+		return "Appointment:- " + doctor + "\n\tPatient: " + patient + "\n\tDate: " + date;
 	}
 }

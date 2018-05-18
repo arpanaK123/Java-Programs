@@ -2,7 +2,7 @@ package com.bridgeit.ClinicManagementPozo;
 
 public class Patient {
 	private String patientName;
-	private String patientId;
+	private int patientId;
 	private String patientMobNum;
 	private int patientAge;
 
@@ -14,11 +14,11 @@ public class Patient {
 		this.patientName = patientName;
 	}
 
-	public String getPatientId() {
+	public int getPatientId() {
 		return patientId;
 	}
 
-	public void setPatientId(String patientId) {
+	public void setPatientId(int patientId) {
 		this.patientId = patientId;
 	}
 
@@ -41,6 +41,7 @@ public class Patient {
 	public String toString()
 
 	{
+		System.out.println();
 		return "\n\t Patient Name: " + patientName + "\n\t Patient ID: " + patientId + "\n\t Patient MobNum: "
 				+ patientMobNum + "\n\t Patient Age: " + patientAge;
 	}
