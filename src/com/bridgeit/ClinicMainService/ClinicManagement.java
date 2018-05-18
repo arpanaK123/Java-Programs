@@ -196,7 +196,7 @@ public class ClinicManagement {
 								break;
 							case 4:
 								searchLoopPatient = 1;
-								System.out.println("Service Closed");
+								System.out.println(" Service Closed");
 							default:
 								System.out.println("Something Wrong..........");
 							}
