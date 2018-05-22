@@ -3,76 +3,62 @@ package com.bridgeit.CommercialDataProcessing;
 import com.bridgeit.dataStructurePrograms.Node1;
 
 public class LinkedQueue<T> {
-	Node<T> front;
 
-	/**
-	 * Add data into linked list
-	 * 
-	 * @param data
-	 */
+	Node<T> head;
+
 	public void add(T data) {
 		Node<T> n = new Node<T>(data);
-		if (front == null) {
-			front = n;
-
-		} else {
-			Node<T> f = front;
-			while (f.next != null)
-				f = f.next;
-			f.next = n;
-
+		if (head == null)
+			head = n;
+		else {
+			Node<T> t = head;
+			while (t.next != null)
+				t = t.next;
+			t.next = n;
 		}
 	}
 
-	/**
-	 * remove data from linked list
-	 * 
-	 * @return
-	 */
-	public T remove() {
-		Node<T> f = front;
-		if (front != null)
-			front = f.next;
-		return f.data;
-	}
-
-	/**
-	 * check the list is empty or not
-	 * 
-	 * @return
-	 */
-	public boolean isEmpty() {
-
-		if (front == null) {
-			return true;
-
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * display the data of the linked list
-	 */
 	public void display() {
-		Node<T> temp = front;
+		Node<T> t = head;
 		Integer a = 10;
 		if (!isEmpty()) {
-			while (temp != null) {
+			while (t != null) {
 
-				if (!(temp.data.equals(-1))) {
-					if (((Integer) (temp.data)).compareTo(a) < 0) {
-						System.out.print(temp.data + "  ");
+				if (!(t.data.equals(-1))) {
+					if ((((Integer) t.data)).compareTo(a) < 0) {
+						System.out.print(t.data + "  ");
 					} else
-						System.out.print(temp.data + " ");
+						System.out.print(t.data + " ");
 				} else
 					System.out.print("   ");
-
-				temp = temp.next;
+				t = t.next;
 			}
 			System.out.println();
-
 		}
+	}
+
+	public T remove() {
+		Node<T> t = head;
+		if (head != null)
+			head = t.next;
+		return t.data;
+	}
+
+	public boolean isEmpty() {
+		if (head == null)
+			return true;
+		else
+			return false;
+	}
+
+	public static void main(String[] args) {
+		LinkedQueue<Integer> l = new LinkedQueue<Integer>();
+		l.add(1);
+		l.display();
+		System.out.println("==");
+		l.remove();
+		l.display();
+		System.out.println(l.isEmpty());
 	}
 
 }

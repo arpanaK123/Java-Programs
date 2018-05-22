@@ -21,17 +21,9 @@ import com.bridgeit.utility.Utility;
 public class UnOrderedList {
 
 	public static void main(String[] args) throws Exception {
-		// FileReader file = new FileReader("unordered");
-		// BufferedReader br = new BufferedReader(file);
-		// String str = br.readLine();
-		// System.out.println("the files contains are:");
-		// System.out.println(str);
-		//
-		// String[] array = str.split("\\s");
+
 		System.out.println("enter string to be searched");
 		String searchString = Utility.inputString();
-		// UnOrderedNodeFunction.searchFunction(searchString, array);
-		// UnOrderedNodeFunction.printData();
 
 		Utility.unOrderedList(searchString);
 

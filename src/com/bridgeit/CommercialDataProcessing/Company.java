@@ -30,8 +30,8 @@ public class Company {
 	}
 
 	public String toString() {
-		return "\n\t Company:  \n\tSymbol:- " + companySymbol + "\n\tShares Avail.:- " + companySharesAvailable
-				+ "\n\tPrice per share:- " + companyPricePerShare;
+		return "\n\t Company:  \n\tSymbol:- " + companySymbol + "\n\tShares Avail.: " + companySharesAvailable
+				+ "\n\tPrice per share: " + companyPricePerShare;
 	}
 
 }

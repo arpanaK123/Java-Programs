@@ -1,7 +1,17 @@
 package com.bridgeit.CommercialDataProcessing;
 
 public class Customer {
+	private String customerName;
 	private String customerSymbol;
+	
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
 	private long customerAmount;
 	private long customerShare;
 
@@ -30,7 +40,7 @@ public class Customer {
 	}
 
 	public String toString() {
-		return "\n\tCustomer:-  \n\tSymbol: " + customerSymbol + "\n\tAmount: " + customerAmount + "\n\tShare: "
-				+ customerShare;
+		return "\n\tCustomer:- Name: " + customerName + " \n\tSymbol: " + customerSymbol + "\n\tAmount: "
+				+ customerAmount + "\n\tShare: " + customerShare;
 	}
 }

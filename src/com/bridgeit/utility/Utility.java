@@ -12,11 +12,14 @@ import java.io.Reader;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.codehaus.jackson.map.deser.std.CalendarDeserializer;
 
 import com.bridgeit.dataStructurePrograms.LinkedQueue;
 import com.bridgeit.dataStructurePrograms.LinkedStack;
@@ -1977,7 +1980,7 @@ public class Utility {
 
 	public static void unOrderedList(String number) throws IOException {
 		UnOrderedLinkedList<String> l = new UnOrderedLinkedList<String>();
-		File file = new File("ordered");
+		File file = new File("unordered");
 		BufferedReader br = new BufferedReader(new FileReader("unordered"));
 
 		String str = "";
@@ -2019,16 +2022,9 @@ public class Utility {
 		String newName = Utility.inputString();
 		System.out.println("enter full name");
 
-		//String fullname = Utility.inputString1();
-//	 while (fullname == null) {
-//			fullname =  Utility.inputString();
-//		}
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		String fullname = sc.nextLine();
-//	
 
-		
-		//System.out.println("fullname"+fullname);
 		String replaceName = sentence.replaceAll("<<name>>", newName);
 		String replaceFullName = replaceName.replaceAll("<<full name>>", fullname);
 
@@ -2060,6 +2056,10 @@ public class Utility {
 	 * @return
 	 */
 	public static String dateChange(String sentence) {
+		Calendar cal = Calendar.getInstance();
+		// cal.DATE
+
+		// System.out.println(date1);
 		System.out.println("enter the new date");
 		String date = Utility.inputString();
 		String rerplaceDate = sentence.replaceAll("10/05/2018", date);

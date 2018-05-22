@@ -26,7 +26,9 @@ public class AddressBookManageImplement implements AddressBookManage {
 	 * Function to save the file
 	 */
 	public void save(String file) {
+		
 		AddressBookImplement addressImplement = new AddressBookImplement();
+		
 		addressImplement.save(file);
 	}
 
@@ -56,20 +58,20 @@ public class AddressBookManageImplement implements AddressBookManage {
 
 	public boolean checkAddressBook(String addressBook) {
 		File fileName = new File("AddressBook");
-		int count = 0;
+		//int count = 0;
 		for (File file : fileName.listFiles()) {
 			if (file.isFile()) {
 
 				if (file.getName().equals(addressBook) + ".json" != null) {
-					count++;
+					//count++;
 					break;
 				}
 			}
 		}
-		if (count == 1)
+		//if (count == 1)
 			return true;
-		else
-			return false;
+	//	else
+			//return false;
 	}
 
 	/*

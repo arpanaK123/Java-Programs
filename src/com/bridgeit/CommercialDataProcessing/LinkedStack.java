@@ -3,39 +3,49 @@ package com.bridgeit.CommercialDataProcessing;
 import com.bridgeit.dataStructurePrograms.Node1;
 
 public class LinkedStack<T> {
-	Node<T> front;
-
+	
+Node<T> head;
+	
 	public void add(T data) {
 		Node<T> n = new Node<T>(data);
-		if (front == null) {
-			front = n;
-
-		} else {
-
-			n.next = front;
-			front = n;
+		if(head==null)
+			head=n;
+		else {
+			n.next=head;
+			head=n;
 		}
 	}
-
+	
 	public void display() {
-		Node<T> f = front;
-		while (f != null) {
-			System.out.println(f.data);
-			f = f.next;
+		Node<T> t=head;
+		while(t!=null) {
+			System.out.println(t.data);
+			t=t.next;
 		}
 	}
-
+	
 	public void remove() {
-		Node<T> f = front;
-		front = f.next;
+		Node<T> t=head;
+		head = t.next;
 	}
-
-	public Integer pop() {
-		Node<T> f = front;
-		Integer temp = (Integer) f.data;
-		front = f.next;
+	public String pop(){
+		Node<T> t=head;
+		String temp =  (String) t.data;
+		head = t.next;
 		return temp;
-
 	}
+	
+	public static void main(String[] args) {
+		LinkedStack<String> l = new LinkedStack<String>();
+		l.add("A");
+		l.add("V");
+		l.display();
+		System.out.println("==");
+		l.display();
+	}
+	
+	
+	
+	
 
 }

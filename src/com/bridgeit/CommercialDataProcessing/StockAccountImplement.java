@@ -26,9 +26,9 @@ public class StockAccountImplement implements StockAccount {
 	Date date = new Date();
 
 	public void create() throws IOException {
-		System.out.println("Enter the name of your file");
+		System.out.println("Enter the name of your Account");
 		String name = Utility.inputString();
-		File file = new File("CommercialData" + name + ".json");
+		File file = new File("CommercialData/" + name + ".json");
 		if (file.createNewFile()) {
 			System.out.println("File is created");
 		} else {
@@ -38,6 +38,8 @@ public class StockAccountImplement implements StockAccount {
 
 	@Override
 	public void buy() {
+		System.out.println("Enter the customer name");
+		String name = Utility.inputString();
 		System.out.println("User Enter the Symbol");
 		String symbol = Utility.inputString();
 		System.out.println("User enter the Amount");
@@ -60,6 +62,7 @@ public class StockAccountImplement implements StockAccount {
 								equalSymbol++;
 								smallAmount++;
 
+								customerLoop.setCustomerName(name);
 								customerLoop.setCustomerAmount(customerLoop.getCustomerAmount() - amount);
 								customerLoop.setCustomerShare(
 										customerLoop.getCustomerShare() + (amount / company.getCompanyPricePerShare()));
@@ -75,9 +78,22 @@ public class StockAccountImplement implements StockAccount {
 						customerList.add(customer);
 
 					}
+					LinkedQueue<String> linkedQueue = new LinkedQueue<String>();
+					increaseDecreaseShare = amount / company.getCompanyPricePerShare();
+					company.setCompanySharesAvailable(company.getCompanySharesAvailable() - increaseDecreaseShare);
+
+					linkedQueue.add(date.toString());
+					System.out.println("Transaction Started");
+					transaction.setBuySell("Buy");
+					transaction.setSymbol(symbol);
+					transaction.setDate(date.toString());
+					transactionList.add(transaction);
+					linkedQueue.remove();
+					System.out.println("Transaction Stop");
 				}
 			}
 		}
+
 		if (smallAmount == 0) {
 			System.out.println("Your Balance is low....Please add Money");
 		}
@@ -85,6 +101,10 @@ public class StockAccountImplement implements StockAccount {
 
 	@Override
 	public void sell() {
+		Customer customer1 = new Customer();
+		System.out.println("enter the customer name");
+		String customerName=Utility.inputString();
+		customer1.setCustomerName(Utility.inputString());
 		System.out.println("User enter the Symbol");
 		String symbol = Utility.inputString();
 		System.out.println("User Enter the Amount");
@@ -102,6 +122,18 @@ public class StockAccountImplement implements StockAccount {
 							customer.setCustomerAmount(customer.getCustomerAmount() + amount);
 							customer.setCustomerShare(
 									customer.getCustomerShare() - (amount / company.getCompanyPricePerShare()));
+
+							transaction.setCustomerName(customerName);
+							LinkedQueue<String> linkedQueue = new LinkedQueue<String>();
+							linkedQueue.add(date.toString());
+							System.out.println("Transaction started");
+							transaction.setCustomerName(customerName);
+							transaction.setBuySell("Sell");
+							transaction.setSymbol(symbol);
+							transaction.setDate(date.toString());
+							transactionList.add(transaction);
+							linkedQueue.remove();
+							System.out.println("transaction Stop");
 
 						}
 					}
@@ -124,7 +156,7 @@ public class StockAccountImplement implements StockAccount {
 	public void read(String file) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			BufferedReader bufferedReader = new BufferedReader(new FileReader("CommercialData" + file + ".json"));
+			BufferedReader bufferedReader = new BufferedReader(new FileReader("CommercialData/" + file + ".json"));
 			String arrayFile;
 			if ((arrayFile = bufferedReader.readLine()) != null) {
 				if (file.equals("Company")) {
@@ -148,26 +180,22 @@ public class StockAccountImplement implements StockAccount {
 
 	public boolean checkAddressBook(String stockFile) {
 		File fileName = new File("CommercialData");
-		int count = 0;
 		for (File file : fileName.listFiles()) {
 			if (file.isFile()) {
 
-				if (file.getName().equals(stockFile) + ".json" != null) {
-					count++;
-					break;
+				if (file.getName().equals(stockFile + ".json")) {
+
+					return true;
 				}
 			}
 		}
-		if (count == 1)
-			return true;
-		else
-			return false;
+
+		return false;
 	}
 
 	public <T> void saveInFile(String file, List<T> T) {
 		try {
-			mapper.writeValue(new File("AddressBook/" + file + ".json"), T);
-			System.out.println("\n\t saved");
+			mapper.writeValue(new File("CommercialData/" + file + ".json"), T);
 			System.out.println("\n\tData saved");
 
 		} catch (IOException e) {
@@ -181,26 +209,28 @@ public class StockAccountImplement implements StockAccount {
 
 		int i = 0;
 		while (i == 0) {
-			System.out.println("\n\t1. Save Company \n\t2. Save User \n\t3.Save Transaction \n\t4. Exit");
+			System.out.println("\n\t1. Save Company \n\t2. Save User \n\t3. Save Transaction \n\t4. Exit");
 			System.out.println("\n User Enter your choice");
 			int choice = Utility.inputInteger();
-			switch (choice) {
-			case 1:
+			{
+				switch (choice) {
+				case 1:
 
-				saveInFile(name, companyList);
-				break;
-			case 2:
+					saveInFile(fileName, companyList);
+					break;
+				case 2:
 
-				saveInFile(name, customerList);
-				break;
-			case 3:
-				saveInFile(name, transactionList);
-				break;
-			case 4:
-				i = 1;
-				System.out.println("Enter Correct Choice");
-			default:
-				System.out.println("service closed");
+					saveInFile(name, customerList);
+					break;
+				case 3:
+					saveInFile("Transaction", transactionList);
+					break;
+				case 4:
+					i = 1;
+					System.out.println("save service close");
+				default:
+					// System.out.println("Something Wrong.....");
+				}
 			}
 		}
 	}
@@ -210,6 +240,7 @@ public class StockAccountImplement implements StockAccount {
 
 		for (Company company : companyList) {
 			System.out.println(company.toString());
+			break;
 		}
 	}
 
@@ -243,6 +274,71 @@ public class StockAccountImplement implements StockAccount {
 		System.out.println("User Enter the Amount");
 		currentAmount = Utility.inputInteger();
 
+	}
+
+	public void addRemoveCompany() {
+		LinkedList<Company> list = new LinkedList<Company>();
+
+		for (Company company : companyList) {
+			list.add(company);
+		}
+		list.display();
+
+		int addLoop = 0;
+		while (addLoop == 0) {
+			System.out.println("\n\t1. Add Company \n\t2. Remove Company \n\t3. Save Company \n\t4. Exit");
+			System.out.println("User Enter Your Choice");
+			int choice = Utility.inputInteger();
+			switch (choice)
+
+			{
+			case 1:
+				Company company = new Company();
+				System.out.println("\nEnter the company name");
+				String name = Utility.inputString();
+				company.setCompanySymbol(name);
+				System.out.println("Enter the Share Available");
+				long shares = Utility.inputLong();
+				company.setCompanySharesAvailable(shares);
+				System.out.println("Enter Price per share");
+				long price = Utility.inputLong();
+				company.setCompanyPricePerShare(price);
+				list.add(company);
+				companyList.add(company);
+				System.out.println();
+				list.display();
+				break;
+
+			case 2:
+				System.out.println("Enter the company name to remove");
+				String name1 = Utility.inputString();
+				int i = 1;
+				for (Company company1 : companyList) {
+					System.out.println("\n" + i + " for " + company1.getCompanySymbol());
+					i++;
+				}
+				System.out.println("Enter choice to remove Company");
+				int choiceRemove = Utility.inputInteger();
+				list.remove(choiceRemove);
+				companyList.remove(choiceRemove - 1);
+				list.display();
+				break;
+			case 3:
+				saveInFile("Company", companyList);
+				break;
+			case 4:
+				addLoop = 1;
+				System.out.println("Add And remove service closed ");
+			default:
+				addLoop = 1;
+				// System.out.println("Something Wrong......");
+				break;
+			}
+		}
+	}
+
+	public void close() {
+		customerList.clear();
 	}
 
 	public void printFunction() {

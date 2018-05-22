@@ -4,6 +4,15 @@ public class Transaction {
 	private String buySell;
 	private String symbol;
 	private String date;
+	private String customerName;
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
 
 	public String getBuySell() {
 		return buySell;
@@ -32,6 +41,7 @@ public class Transaction {
 	public String toString()
 
 	{
-		return "\n\tTransaction:- \n\tBuySell: " + buySell + "\n\tSymbol: " + symbol + "\n\tDate: " + date;
+		return "\n\tTransaction:- \n\tName: " + customerName + "\n\tBuySell: " + buySell + "\n\tSymbol: " + symbol
+				+ "\n\tDate: " + date;
 	}
 }

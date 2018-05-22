@@ -1,0 +1,14 @@
+{"Inventory":[
+{
+"Name":"Rice",
+"Weight":10,
+"Price/kg":50},
+{
+"Name":"Pulse",
+"Weight":10,
+"Price/kg":50},
+{"Name":"Wheat",
+"Weight":10,
+"Price/kg":50}
+]
+}
