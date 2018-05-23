@@ -37,13 +37,16 @@ public class MainClassAddressBook {
 				break;
 			case 2:
 				addressBookImplement.close(addressBook);
+				
 				manageImplement.readAddress();
 				System.out.println("User Enter the name of Your Address Book");
 				addressBook = Utility.inputString();
 
 				if (manageImplement.checkAddressBook(addressBook)) {
 					int j = 0;
+					manageImplement.read(addressBook);
 					while (j == 0) {
+						
 						System.out.println();
 						System.out.println("\t1. Add Your Address Book ");
 						System.out.println("\t2. Edit Your Address Book");

@@ -2091,18 +2091,19 @@ public class Utility {
 	 * @return
 	 */
 	public static String[] deck(String[] suits, String[] ranks) {
-		int n = suits.length * ranks.length;
 
-		String[] deck = new String[n];
+		String[] deck = new String[suits.length * ranks.length];
 
+		// initialize deck of cards block
 		for (int i = 0; i < ranks.length; i++) {
 			for (int j = 0; j < suits.length; j++) {
 				deck[suits.length * i + j] = ranks[i] + " " + "of" + " " + suits[j];
 			}
 		}
 
+		// shuffle deck of cards
 		for (int i = 0; i < deck.length; i++) {
-			int random = i + (int) Math.random() * (deck.length - 1);
+			int random = i + (int) (Math.random() * (deck.length - i));
 			String temp = deck[random];
 			deck[random] = deck[i];
 			deck[i] = temp;

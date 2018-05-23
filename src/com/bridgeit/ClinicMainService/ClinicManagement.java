@@ -64,6 +64,7 @@ public class ClinicManagement {
 						doctorList = addDetailsImplement.addDoctor(doctorList);
 						break;
 					case 2:
+						System.out.println("Enter patient Details");
 						patientList = addDetailsImplement.addPatient(patientList);
 						break;
 					case 3:
@@ -197,8 +198,10 @@ public class ClinicManagement {
 							case 4:
 								searchLoopPatient = 1;
 								System.out.println(" Service Closed");
+								break;
 							default:
 								System.out.println("Something Wrong..........");
+								
 							}
 						}
 						break;

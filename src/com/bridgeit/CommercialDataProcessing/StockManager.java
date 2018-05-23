@@ -1,3 +1,12 @@
+/*
+ * Purpose:-StockAccount.java implements a data type that might be used by a 
+ *          financial institution to keep track of customer information. The
+ *          StockAccount class implements following methods
+ *          
+ *@Author: Arpana Kumari
+ *Version:1.0
+ *@Since: 23 May, 2018          
+ */
 package com.bridgeit.CommercialDataProcessing;
 
 import java.io.IOException;
@@ -50,13 +59,15 @@ public class StockManager {
 							stockImplement.addMoney();
 							break;
 						case 2:
-							stockImplement.buy();
+							stockImplement.buy(name);
 							break;
 						case 3:
-							stockImplement.sell();
+							stockImplement.printCustomer();
+
+							stockImplement.sell(name);
 							break;
 						case 4:
-							stockImplement.save(file, name);
+							stockImplement.savetofile(file, name);
 							break;
 						case 5:
 							int dispalyLoop = 0;
@@ -68,7 +79,6 @@ public class StockManager {
 								switch (choiceDisplay) {
 								case 1:
 									stockImplement.printReport();
-									//stockImplement.printFunction();
 									break;
 								case 2:
 									stockImplement.printCustomer();
@@ -91,6 +101,7 @@ public class StockManager {
 
 						default:
 							System.out.println("Something Wrong......");
+							
 							loop = 1;
 						}
 					} else {
@@ -107,7 +118,7 @@ public class StockManager {
 				System.out.println("Service close");
 				choiceLoop = 1;
 			default:
-				//System.out.println("\nSomething Wrong......");
+				// System.out.println("\nSomething Wrong......");
 				choiceLoop = 1;
 				break;
 

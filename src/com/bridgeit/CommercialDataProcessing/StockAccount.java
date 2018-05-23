@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface StockAccount {
 
-	public void buy();
+	public void buy(String name);
 
-	public void sell();
+	public void sell(String name);
 
-	public void save(String fileName, String name);
+	public void savetofile(String fileName, String name);
 
 	public void printReport();
 

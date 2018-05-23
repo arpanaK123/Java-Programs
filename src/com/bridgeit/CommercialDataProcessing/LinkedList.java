@@ -207,48 +207,4 @@ public class LinkedList<T> {
 		}
 	}
 
-	public static void main(String[] args) throws Exception {
-		LinkedList<Integer> list = new LinkedList<Integer>();
-		list.add(1);
-		list.add(2);
-		list.add(4);
-		list.add(5);
-		list.add(3);
-		list.display();
-		System.out.println("=====");
-		System.out.println("pop method prints");
-		list.pop();
-		System.out.println("=====");
-		System.out.println("pop at a position");
-		list.pop(3);
-		System.out.println("=====");
-		System.out.println("isEmpty");
-		System.out.println(list.isEmpty());
-		System.out.println("=====");
-		System.out.println("Append");
-		list.append(6);
-		list.pop();
-		System.out.println("=====");
-		System.out.println("Size of List");
-		System.out.println(list.size());
-		System.out.println("=====");
-		System.out.println("Search of element");
-		System.out.println(list.search(10));
-		System.out.println("=====");
-		int index = list.index(6);
-		if (index == -1)
-			System.out.println("Not present");
-		else
-			System.out.println("Present at index " + index);
-		System.out.println("=====");
-		System.out.println("Remove");
-		list.remove(1);
-		list.display();
-		System.out.println("=====");
-		System.out.println("Insert");
-		list.insert(4, 10);
-		// list.sort(0);
-		list.display();
-	}
-
 }

@@ -51,14 +51,4 @@ public class LinkedQueue<T> {
 			return false;
 	}
 
-	public static void main(String[] args) {
-		LinkedQueue<Integer> l = new LinkedQueue<Integer>();
-		l.add(1);
-		l.display();
-		System.out.println("==");
-		l.remove();
-		l.display();
-		System.out.println(l.isEmpty());
-	}
-
 }
