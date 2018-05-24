@@ -12,6 +12,6 @@ public interface StockAccount {
 
 	public void printReport();
 
-	public long valueOf(List<Company> company);
+	//public long valueOf(List<Company> company);
 
 }

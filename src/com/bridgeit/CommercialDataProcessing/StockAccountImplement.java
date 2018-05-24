@@ -153,19 +153,17 @@ public class StockAccountImplement implements StockAccount {
 					System.out.println("entered amount is greater than your balance amount");
 				}
 
-			} else {
-				System.out.println("company not found");
 			}
 
 		}
 
 	}
 
-	@Override
-	public long valueOf(List<Company> company) {
-
-		return 0;
-	}
+//	@Override
+//	public long valueOf(List<Company> company) {
+//
+//		return 0;
+//	}
 
 	// Function to read the file
 	public void read(String file) {
@@ -285,7 +283,7 @@ public class StockAccountImplement implements StockAccount {
 
 	}
 
-	// Function to Display the Transaction
+	// Function to Display the Transaction Using Stack
 	public void printTransaction()
 
 	{

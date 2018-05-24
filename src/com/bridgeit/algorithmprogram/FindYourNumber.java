@@ -8,6 +8,9 @@
  */
 package com.bridgeit.algorithmprogram;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.bridgeit.utility.Utility;
 
 public class FindYourNumber {
@@ -22,6 +25,7 @@ public class FindYourNumber {
 		}
 
 		Utility.yourNumberFind(array);
+		
 	}
 
 }
