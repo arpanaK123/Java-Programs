@@ -892,23 +892,24 @@ public class Utility {
 
 	}
 
-	public static int findYourNumber(int low, int high) {
-		int mid = (low + high) / 2;
-		if (mid == high)
+	public static int findYourNumber(int lowIndex, int highIndex) {
+		int mid = (lowIndex + highIndex) / 2;
+		if (mid == highIndex)
 			return mid;
 
-		System.out.println("if it is less than " + mid + " then enter 'yes/no'");
+		System.out.println("\nif it is mid number " + mid + "\n-> enter stop  or\n");
+		System.out.println("\nif it is less than " + mid + "  Enter \n->yes otherwise \n->no");
 		String choose = Utility.inputString();
 		if (choose.equalsIgnoreCase("stop"))
 
 			return mid;
 
 		else if (choose.equalsIgnoreCase("yes"))
-			return findYourNumber(low, high);
+			return findYourNumber(lowIndex, mid);
 
 		else
 
-			return findYourNumber(mid + 1, high);
+			return findYourNumber(mid + 1, highIndex);
 
 	}
 

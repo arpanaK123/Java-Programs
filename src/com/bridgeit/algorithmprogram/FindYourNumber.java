@@ -8,9 +8,6 @@
  */
 package com.bridgeit.algorithmprogram;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bridgeit.utility.Utility;
 
 public class FindYourNumber {
@@ -19,9 +16,9 @@ public class FindYourNumber {
 		System.out.println("enter a number range");
 		int range = Utility.inputInteger();
 		int rangePower = (int) Utility.rangePower(range, 2);
-		System.out.println("First U have to think a Number Between 0 and " + rangePower);
+		System.out.println("\n\tFirst U have to think a Number Between 0 and " + rangePower);
 		int finalNUmber = Utility.findYourNumber(0, rangePower);
-		System.out.println("your number is= " + finalNUmber);
+		System.out.println("\n\tyour number is= " + finalNUmber);
 
 	}
 
