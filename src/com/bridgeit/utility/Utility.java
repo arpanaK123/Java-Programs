@@ -892,6 +892,26 @@ public class Utility {
 
 	}
 
+	public static int findYourNumber(int low, int high) {
+		int mid = (low + high) / 2;
+		if (mid == high)
+			return mid;
+
+		System.out.println("if it is less than " + mid + " then enter 'yes/no'");
+		String choose = Utility.inputString();
+		if (choose.equalsIgnoreCase("stop"))
+
+			return mid;
+
+		else if (choose.equalsIgnoreCase("yes"))
+			return findYourNumber(low, high);
+
+		else
+
+			return findYourNumber(mid + 1, high);
+
+	}
+
 	/**
 	 * Your number find function
 	 * 
